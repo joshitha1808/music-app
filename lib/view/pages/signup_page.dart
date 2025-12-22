@@ -36,6 +36,24 @@ class _SignupPageState extends State<SignupPage> {
             CustomField(hintText: 'Password'),
             const SizedBox(height: 20),
             AuthGradientPage(),
+            const SizedBox(height: 20),
+            RichText(
+              text: TextSpan(
+                text: 'Already  have  an  acount?  ',
+                style: TextStyle(
+                  fontSize: 14,
+                  //fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+
+                children: [
+                  TextSpan(
+                    text: 'Sign In',
+                    style: TextStyle(color: Pallete.gradient2),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
