@@ -64,7 +64,7 @@ class _SignupPageState extends State<SignupPage> {
                     color: Colors.white,
                   ),
 
-                  children: [
+                  children: const [
                     TextSpan(
                       text: 'Sign In',
                       style: TextStyle(color: Pallete.gradient2),
