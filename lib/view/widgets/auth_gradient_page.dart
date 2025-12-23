@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:client/core/theme/app_pallete.dart';
 
 class AuthGradientPage extends StatelessWidget {
-  const AuthGradientPage({super.key});
+  final String buttonText;
+  const AuthGradientPage({super.key,required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class AuthGradientPage extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         child: Text(
-          'Sign Up',
+          buttonText,
           style: TextStyle(
             fontSize: 17,
             color: Colors.white,
