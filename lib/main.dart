@@ -1,7 +1,6 @@
 import 'package:client/core/theme/theme.dart';
-import 'package:client/view/pages/signup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:client/view/pages/signin_page.dart';
+import 'package:client/features/auth/view/pages/signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.darkThemeMode,
-      home: const SigninPage(),
+      home: const SignupPage(),
       debugShowCheckedModeBanner: false,
     );
   }
