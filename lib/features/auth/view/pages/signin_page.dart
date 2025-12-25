@@ -1,5 +1,6 @@
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/features/auth/repositories/auth_remote_repository.dart';
+import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_page.dart';
 import 'package:client/features/auth/view/widgets/custom_field.dart';
 import 'package:flutter/material.dart';
@@ -61,22 +62,30 @@ class _SignupPageState extends State<SigninPage> {
                 },
               ),
               const SizedBox(height: 20),
-              RichText(
-                text: TextSpan(
-                  text:
-                      "Don't have  an  acount?  ", //or 'Don\'t have an account
-                  style: TextStyle(
-                    fontSize: 14,
-                    //fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
-
-                  children: const [
-                    TextSpan(
-                      text: 'Sign Up',
-                      style: TextStyle(color: Pallete.gradient2),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignupPage()),
+                  );
+                },
+                child: RichText(
+                  text: TextSpan(
+                    text:
+                        "Don't have  an  acount?  ", //or 'Don\'t have an account
+                    style: TextStyle(
+                      fontSize: 14,
+                      //fontWeight: FontWeight.w700,
+                      color: Colors.white,
                     ),
-                  ],
+
+                    children: const [
+                      TextSpan(
+                        text: 'Sign Up',
+                        style: TextStyle(color: Pallete.gradient2),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
