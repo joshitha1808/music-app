@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AuthRemoteRepository {
-  Future<void> signup({
+  Future<Map<String,dynamic>>signup({
     required String name,
     required String email,
     required String password,
@@ -15,10 +15,16 @@ class AuthRemoteRepository {
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'name': name, 'email': email, 'password': password}),
       );
-      print(response.body);
-      print(response.statusCode);
+      if(response.statusCode!=201){
+        //handle the error
+        throw '';
+      }
+      final user= jsonDecode(response.body) as Map<String,dynamic>;
+      return user;
+      
     } catch (e) {
-      print(e);
+      throw '';
+     
     }
   }
 
