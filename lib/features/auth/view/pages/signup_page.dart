@@ -55,7 +55,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 20),
               AuthGradientPage(
-                buttonText: 'Sign uP',
+                buttonText: 'Sign up',
                 onTap: () async {
                   await AuthRemoteRepository().signup(
                     name: nameController.text,
