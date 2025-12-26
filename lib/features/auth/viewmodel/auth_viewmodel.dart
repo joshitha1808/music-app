@@ -6,34 +6,33 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'auth_viewmodel.g.dart';
 
 @riverpod
-class AuthViewmodel extends _$AuthViewmodel{
-  final AuthRemoteRepository _authRemoteRepository=AuthRemoteRepository();
+class AuthViewmodel extends _$AuthViewmodel {
+  final AuthRemoteRepository _authRemoteRepository = AuthRemoteRepository();
 
   @override
-    AsyncValue<UserModel>? build(){
-      return null;
-    }
-    Future<void>signUpUser({
-      required String name,
-      required String email,
-      required String password,
-    }
-    )async{
-      final res = await _authRemoteRepository.signup(
-                    name:name,
-                    email: email,
-                    password: password,
-                  );
-//pattern matching 
-                  final val = switch (res) {
-                    Left(value: final l) => l,
-                    Right(value: final r) => r.name,//sucess return name
-                  };
-                  print(val);
-                
+  AsyncValue<UserModel>? build() {
+    return null;
+  }
 
-    }
-
+  Future<void> signUpUser({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    state = const AsyncValue.loading();
+    final res = await _authRemoteRepository.signup(
+      name: name,
+      email: email,
+      password: password,
+    );
+    //pattern matching
+    final val = switch (res) {
+      Left(value: final l) => state = AsyncValue.error(
+        l.message,
+        StackTrace.current,
+      ),
+      Right(value: final r) => state = AsyncValue.data(r), //sucess return name
+    };
+    print(val);
+  }
 }
-  
-
