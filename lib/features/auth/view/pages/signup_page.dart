@@ -64,10 +64,12 @@ class _SignupPageState extends State<SignupPage> {
                     email: emailController.text,
                     password: passwordController.text,
                   );
+
                   final val = switch (res) {
                     Left(value: final l) => l,
                     Right(value: final r) => r.toString(),
                   };
+                  print(val);
                 },
               ),
               const SizedBox(height: 20),
