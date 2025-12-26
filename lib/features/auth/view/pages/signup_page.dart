@@ -31,6 +31,32 @@ class _SignupPageState extends ConsumerState<SignupPage> {
   @override
   Widget build(BuildContext context) {
     final isLoading = ref.watch(authViewmodelProvider)?.isLoading == true;
+    ref.listen(authViewmodelProvider, (_, next) {
+      next?.when(
+        data: (data) {
+          final messenger = ScaffoldMessenger.of(context);
+
+          messenger.hideCurrentSnackBar();
+          messenger.showSnackBar(
+            const SnackBar(
+              content: Text('Account created successfully. Please log in.'),
+            ),
+          );
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SigninPage()),
+          );
+        },
+        error: (error, st) {
+          final messenger = ScaffoldMessenger.of(context);
+
+          messenger.hideCurrentSnackBar();
+          messenger.showSnackBar(SnackBar(content: Text(error.toString())));
+        },
+        loading: () {},
+      );
+    });
 
     return Scaffold(
       appBar: AppBar(backgroundColor: Pallete.backgroundColor),
