@@ -18,6 +18,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
   @override
   void dispose() {
     nameController.dispose();
@@ -28,76 +29,81 @@ class _SignupPageState extends ConsumerState<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
+    final val = ref.watch(authViewmodelProvider);
+    print(val);
+
     return Scaffold(
       appBar: AppBar(backgroundColor: Pallete.backgroundColor),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Sign up.',
-                style: TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 30),
-              CustomField(hintText: 'Name', controller: nameController),
-              const SizedBox(height: 15),
-              CustomField(hintText: 'Email', controller: emailController),
-              const SizedBox(height: 15),
-              CustomField(
-                hintText: 'Password',
-                controller: passwordController,
-                isObscureText: true,
-              ),
-              const SizedBox(height: 20),
-              AuthGradientPage(
-                buttonText: 'Sign up',
-                onTap: () async {
-                  if (formKey.currentState!.validate()) {
-                    ref
-                        .read(authViewmodelProvider.notifier)
-                        .signUpUser(
-                          name: nameController.text,
-                          email: emailController.text,
-                          password: passwordController.text,
-                        );
-                  }
-                  
-                },
-              ),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SigninPage()),
-                  );
-                },
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Already  have  an  acount?  ',
-                    style: TextStyle(
-                      fontSize: 14,
-                      //fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-
-                    children: const [
-                      TextSpan(
-                        text: 'Sign In',
-                        style: TextStyle(color: Pallete.gradient2),
-                      ),
-                    ],
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Sign up.',
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 30),
+                CustomField(hintText: 'Name', controller: nameController),
+                const SizedBox(height: 15),
+                CustomField(hintText: 'Email', controller: emailController),
+                const SizedBox(height: 15),
+                CustomField(
+                  hintText: 'Password',
+                  controller: passwordController,
+                  isObscureText: true,
+                ),
+                const SizedBox(height: 20),
+                AuthGradientPage(
+                  buttonText: 'Sign up',
+                  onTap: () async {
+                    if (formKey.currentState!.validate()) {
+                      ref
+                          .read(authViewmodelProvider.notifier)
+                          .signUpUser(
+                            name: nameController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
+                    }
+                  },
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SigninPage(),
+                      ),
+                    );
+                  },
+                  child: RichText(
+                    text: const TextSpan(
+                      text: 'Already  have  an  acount?  ',
+                      style: TextStyle(fontSize: 14, color: Colors.white),
+                      children: [
+                        TextSpan(
+                          text: 'Sign In',
+                          style: TextStyle(color: Pallete.gradient2),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
