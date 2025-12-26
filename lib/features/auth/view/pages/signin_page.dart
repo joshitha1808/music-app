@@ -17,8 +17,7 @@ class _SignupPageState extends State<SigninPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  
-  
+
   @override
   void dispose() {
     emailController.dispose();
@@ -47,24 +46,29 @@ class _SignupPageState extends State<SigninPage> {
               ),
 
               const SizedBox(height: 15),
-              CustomField(hintText: 'Email', controller: emailController),
+              CustomField(
+                hintText: 'Email',
+                controller: emailController,
+                autofocus: false,
+              ),
               const SizedBox(height: 15),
               CustomField(
                 hintText: 'Password',
                 controller: passwordController,
                 isObscureText: true,
+                autofocus: false,
               ),
               const SizedBox(height: 20),
               AuthGradientPage(
                 buttonText: 'Sign in',
                 onTap: () async {
-                  final res=await AuthRemoteRepository().login(
+                  final res = await AuthRemoteRepository().login(
                     email: emailController.text,
                     password: passwordController.text,
                   );
-                  final val=switch(res){
-                    Left(value:final l) =>l,
-                    Right(value:final r) => r,
+                  final val = switch (res) {
+                    Left(value: final l) => l,
+                    Right(value: final r) => r,
                   };
                   print(val);
                 },
