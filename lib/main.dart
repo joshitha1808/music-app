@@ -4,17 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final container=ProviderContainer();
+  final container = ProviderContainer();
   await container.read(authViewModelProvider.notifier).initSharedPreferences();
-  
-  runApp(
-    ProviderScope(
-      parent: container,
-      child: const MyApp()
-    ),
-  );
+
+  runApp(UncontrolledProviderScope(container: container, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
