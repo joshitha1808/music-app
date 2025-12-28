@@ -1,9 +1,22 @@
 import 'dart:convert';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:http/http.dart' as http;
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:client/core/server_constants.dart';
 import 'package:client/core/theme/failure/failure.dart';
 import 'package:client/features/auth/model/user_model.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:http/http.dart' as http;
+
+part 'auth_remote_repository.g.dart';
+
+@riverpod
+AuthRemoteRepository authRemoteRepository(AuthRemoteRepositoryRef ref) {
+  return AuthRemoteRepository();
+}
+
+class AuthRemoteRepositoryRef {}
 
 class AuthRemoteRepository {
   Future<Either<AppFailure, UserModel>> signup({
@@ -13,7 +26,7 @@ class AuthRemoteRepository {
   }) async {
     try {
       final response = await http.post(
-        Uri.parse('${ServerConstants.serverURL}/auth/signup'),
+        Uri.parse('${ServerConstant.serverURL}/auth/signup'),
 
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'name': name, 'email': email, 'password': password}),
@@ -36,7 +49,7 @@ class AuthRemoteRepository {
   }) async {
     try {
       final response = await http.post(
-        Uri.parse('${ServerConstants.serverURL}/auth/login'),
+        Uri.parse('${ServerConstant.serverURL}/auth/login'),
 
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'email': email, 'password': password}),
