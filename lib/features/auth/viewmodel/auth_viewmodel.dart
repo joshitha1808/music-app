@@ -1,3 +1,5 @@
+
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -22,9 +24,8 @@ class AuthViewModel extends _$AuthViewModel {
   Future<void> initSharedPreferences() async {
     await _authLocalRepository.init();
   }
-
-  /// SIGN UP
-  Future<void> signUpUser({
+  
+  Future<void> signupUser({
     required String name,
     required String email,
     required String password,
@@ -51,4 +52,16 @@ class AuthViewModel extends _$AuthViewModel {
     _authLocalRepository.setToken(user.token);
     return state = AsyncValue.data(user);
   }
+
+  Future<UserModel?> getData() async{
+    state =const AsyncValue.loading();
+    final token =_authLocalRepository.getToken();
+    if(token!=null){
+      //TODO:send a rqust to server to get the user data by token
+
+    }
+  }
+
+
+ 
 }
