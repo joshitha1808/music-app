@@ -30,8 +30,8 @@ class _SignupPageState extends ConsumerState<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = ref.watch(authViewmodelProvider)?.isLoading == true;
-    ref.listen(authViewmodelProvider, (_, next) {
+    final isLoading = ref.watch(authViewModelProvider)?.isLoading == true;
+    ref.listen(authViewModelProvider, (_, next) {
       next?.when(
         data: (data) {
           final messenger = ScaffoldMessenger.of(context);
@@ -106,7 +106,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                         onTap: () async {
                           if (formKey.currentState!.validate()) {
                             ref
-                                .read(authViewmodelProvider.notifier)
+                                .read(authViewModelProvider.notifier)
                                 .signUpUser(
                                   name: nameController.text,
                                   email: emailController.text,
