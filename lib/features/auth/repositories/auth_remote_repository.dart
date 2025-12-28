@@ -16,8 +16,6 @@ AuthRemoteRepository authRemoteRepository(AuthRemoteRepositoryRef ref) {
   return AuthRemoteRepository();
 }
 
-class AuthRemoteRepositoryRef {}
-
 class AuthRemoteRepository {
   Future<Either<AppFailure, UserModel>> signup({
     required String name,
@@ -59,7 +57,11 @@ class AuthRemoteRepository {
       if (response.statusCode != 200) {
         return Left(AppFailure(resBodyMap['detail']));
       }
-      return Right(UserModel.fromMap(resBodyMap));
+      return Right(
+        UserModel.fromMap(
+          resBodyMap['user'],
+        ).copyWith(token: resBodyMap['token']),
+      );
     } catch (e) {
       return Left(AppFailure(e.toString()));
     }
