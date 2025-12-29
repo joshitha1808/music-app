@@ -1,5 +1,3 @@
-
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -24,7 +22,7 @@ class AuthViewModel extends _$AuthViewModel {
   Future<void> initSharedPreferences() async {
     await _authLocalRepository.init();
   }
-  
+
   Future<void> signupUser({
     required String name,
     required String email,
@@ -43,7 +41,7 @@ class AuthViewModel extends _$AuthViewModel {
         l.message,
         StackTrace.current,
       ),
-      Right(value: final r) => state =_loginSuccess(r),
+      Right(value: final r) => state = _loginSuccess(r),
     };
     print(val);
   }
@@ -53,23 +51,18 @@ class AuthViewModel extends _$AuthViewModel {
     return state = AsyncValue.data(user);
   }
 
-  Future<UserModel?> getData() async{
-    state =const AsyncValue.loading();
-    final token =_authLocalRepository.getToken();
-    if(token!=null){
-      final res= await _authRemoteRepository.getCurrentUserData(token);
+  Future<UserModel?> getData() async {
+    state = const AsyncValue.loading();
+    final token = _authLocalRepository.getToken();
+    if (token != null) {
+      final res = await _authRemoteRepository.getCurrentUserData(token);
       final val = switch (res) {
-      Left(value: final l) => state = AsyncValue.error(
-        l.message,
-        StackTrace.current,
-      ),
-      Right(value: final r) => state = _loginSuccess(r),
+        Left(value: final l) => state = AsyncValue.error(
+          l.message,
+          StackTrace.current,
+        ),
+        Right(value: final r) => state = AsyncValue.data(r),
       };
-    
-
     }
   }
-
-
- 
 }
