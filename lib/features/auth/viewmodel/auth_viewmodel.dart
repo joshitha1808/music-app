@@ -43,7 +43,7 @@ class AuthViewModel extends _$AuthViewModel {
         l.message,
         StackTrace.current,
       ),
-      Right(value: final r) => state = AsyncValue.data(r),
+      Right(value: final r) => state =_loginSuccess(r),
     };
     print(val);
   }
@@ -58,13 +58,13 @@ class AuthViewModel extends _$AuthViewModel {
     final token =_authLocalRepository.getToken();
     if(token!=null){
       final res= await _authRemoteRepository.getCurrentUserData(token);
-      // final val = switch (res) {
-      // Left(value: final l) => state = AsyncValue.error(
-      //   l.message,
-      //   StackTrace.current,
-      // ),
-      // Right(value: final r) => state = AsyncValue.data(r),
-      // };
+      final val = switch (res) {
+      Left(value: final l) => state = AsyncValue.error(
+        l.message,
+        StackTrace.current,
+      ),
+      Right(value: final r) => state = _loginSuccess(r),
+      };
     
 
     }
