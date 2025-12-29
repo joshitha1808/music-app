@@ -63,6 +63,7 @@ class AuthViewModel extends _$AuthViewModel {
         ),
         Right(value: final r) => state = AsyncValue.data(r),
       };
+      return val.value;
     }
   }
 }
