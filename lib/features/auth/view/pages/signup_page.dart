@@ -1,4 +1,5 @@
 import 'package:client/core/theme/app_pallete.dart';
+import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/loader.dart';
 import 'package:client/features/auth/view/pages/signin_page.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_page.dart';
@@ -107,11 +108,13 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                           if (formKey.currentState!.validate()) {
                             ref
                                 .read(authViewModelProvider.notifier)
-                                .signUpUser(
+                                .signupUser(
                                   name: nameController.text,
                                   email: emailController.text,
                                   password: passwordController.text,
                                 );
+                          } else {
+                            showSnackBar(context, 'Missing fields!');
                           }
                         },
                       ),
