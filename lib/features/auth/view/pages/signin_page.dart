@@ -1,14 +1,13 @@
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/loader.dart';
-import 'package:client/features/auth/repositories/auth_remote_repository.dart';
+
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_page.dart';
 import 'package:client/features/auth/view/widgets/custom_field.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fpdart/fpdart.dart';
 
 class SigninPage extends ConsumerStatefulWidget {
   const SigninPage({super.key});
@@ -81,15 +80,16 @@ class _SignupPageState extends ConsumerState<SigninPage> {
                     AuthGradientPage(
                       buttonText: 'Sign in',
                       onTap: () async {
-                        final res = await AuthRemoteRepository().login(
-                          email: emailController.text,
-                          password: passwordController.text,
-                        );
-                        final val = switch (res) {
-                          Left(value: final l) => l,
-                          Right(value: final r) => r,
-                        };
-                        print(val);
+                        if (formKey.currentState!.validate()) {
+                          await ref
+                              .read(authViewModelProvider.notifier)
+                              .signinUser(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                        } else {
+                          showSnackBar(context, 'Missing fields!');
+                        }
                       },
                     ),
                     const SizedBox(height: 20),
