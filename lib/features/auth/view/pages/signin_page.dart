@@ -30,12 +30,13 @@ class _SignupPageState extends ConsumerState<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = ref.watch(authViewModelProvider)?.isLoading == true;
+    final isLoading = ref.watch(
+      authViewModelProvider.select((val) => val?.isLoading == true),
+    );
     ref.listen(authViewModelProvider, (_, next) {
       next?.when(
-        data: (data) {
-          showSnackBar(context, 'Account created sucessfully! please login');
-        },
+        data: (data) {},
+
         error: (error, st) {
           showSnackBar(context, error.toString());
         },
