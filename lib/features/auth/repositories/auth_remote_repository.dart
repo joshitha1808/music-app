@@ -79,9 +79,7 @@ class AuthRemoteRepository {
       if (response.statusCode != 200) {
         return Left(AppFailure(resBodyMap['detail']));
       }
-      return Right(
-        UserModel.fromMap(resBodyMap).copyWith(token:token),
-      );
+      return Right(UserModel.fromMap(resBodyMap).copyWith(token: token));
     } catch (e) {
       return Left(AppFailure(e.toString()));
     }
