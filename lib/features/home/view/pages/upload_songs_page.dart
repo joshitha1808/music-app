@@ -31,6 +31,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               height: 150,
               width: double.infinity,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.folder_open, size: 40, color: Colors.white),
                   Text(
