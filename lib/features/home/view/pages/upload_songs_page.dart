@@ -23,7 +23,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
   File? seletedAudio;
 
   void selectAudio() async {
-    final pickedAudio = await pickImage();
+    final pickedAudio = await pickAudio();
     if (pickedAudio != null) {
       setState(() {
         seletedAudio = pickedAudio;
