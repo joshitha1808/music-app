@@ -16,6 +16,21 @@ Future<File?> pickAudioFile() async {
     );
 
     if (filePickerRes != null) {
+      return File(filePickerRes.files.first.xFile.path);
+    }
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+Future<File?> pickImage() async {
+  try {
+    final filePickerRes = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+    );
+
+    if (filePickerRes != null) {
       String? filePath = filePickerRes!.files.first.xFile.path;
     }
     return null;
