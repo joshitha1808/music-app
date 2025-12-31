@@ -31,6 +31,8 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
             DottedBorder(
               color: Pallete.borderColor,
               dashPattern: const [10, 4],
+              radius: const Radius.circular(10),
+              
 
               child: SizedBox(
                 height: 150,
