@@ -66,7 +66,11 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               GestureDetector(
                 onTap: selectImage,
                 child: seletedImage != null
-                    ? Image.file(seletedImage!)
+                    ? SizedBox(
+                        height: 150,
+                        width: double.infinity,
+                        child: Image.file(seletedImage!),
+                      )
                     : DottedBorder(
                         color: Pallete.borderColor,
                         dashPattern: const [10, 4],
