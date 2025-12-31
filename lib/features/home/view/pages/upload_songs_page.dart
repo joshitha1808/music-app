@@ -12,6 +12,7 @@ class UploadSongsPage extends ConsumerStatefulWidget {
 }
 
 class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
+  final songNameController=TextEditingController();
   
   @override
   Widget build(BuildContext context) {
