@@ -37,63 +37,65 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            DottedBorder(
-              color: Pallete.borderColor,
-              dashPattern: const [10, 4],
-              radius: const Radius.circular(10),
-              borderType: BorderType.RRect,
-              strokeCap: StrokeCap.round,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              DottedBorder(
+                color: Pallete.borderColor,
+                dashPattern: const [10, 4],
+                radius: const Radius.circular(10),
+                borderType: BorderType.RRect,
+                strokeCap: StrokeCap.round,
 
-              child: SizedBox(
-                height: 150,
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.folder_open, size: 40, color: Colors.white),
-                    SizedBox(height: 15),
-                    Text(
-                      'Select the thumbnail for your song',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                child: SizedBox(
+                  height: 150,
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.folder_open, size: 40, color: Colors.white),
+                      SizedBox(height: 15),
+                      Text(
+                        'Select the thumbnail for your song',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 40),
-            CustomField(
-              hintText: 'Pick Song',
-              controller: null,
-              readOnly: true,
-              autofocus: false,
-              onTap: () {},
-            ),
-            const SizedBox(height: 20),
-            CustomField(
-              hintText: 'Artist',
-              controller: artistController,
-              autofocus: false,
-            ),
-            SizedBox(height: 20),
-            CustomField(
-              hintText: 'Song Name',
-              controller: songNameController,
-              autofocus: false,
-            ),
-            SizedBox(height: 20),
-            ColorPicker(
-              color: selectedColor,
-              onColorChanged: (Color color) {
-                setState(() {
-                  selectedColor = color;
-                });
-              },
-            ),
-          ],
+              const SizedBox(height: 40),
+              CustomField(
+                hintText: 'Pick Song',
+                controller: null,
+                readOnly: true,
+                autofocus: false,
+                onTap: () {},
+              ),
+              const SizedBox(height: 20),
+              CustomField(
+                hintText: 'Artist',
+                controller: artistController,
+                autofocus: false,
+              ),
+              SizedBox(height: 20),
+              CustomField(
+                hintText: 'Song Name',
+                controller: songNameController,
+                autofocus: false,
+              ),
+              SizedBox(height: 20),
+              ColorPicker(
+                color: selectedColor,
+                onColorChanged: (Color color) {
+                  setState(() {
+                    selectedColor = color;
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
