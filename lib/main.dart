@@ -1,5 +1,8 @@
+import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/core/theme/theme.dart';
+import 'package:client/features/auth/view/pages/signin_page.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
+import 'package:client/features/home/view/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,19 +14,21 @@ void main() async {
   final userModel = await container
       .read(authViewModelProvider.notifier)
       .getData();
-  print(userModel);
 
   runApp(UncontrolledProviderScope(container: container, child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentUser = ref.watch(currentUserNotifierProvider);
+
     return MaterialApp(
       title: 'Music App',
       theme: AppTheme.darkThemeMode,
-      home: const SignupPage(),
+      home: currentUser == null ? const SignupPage() : HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
