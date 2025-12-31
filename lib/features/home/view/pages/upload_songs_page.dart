@@ -64,6 +64,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
           child: Column(
             children: [
               GestureDetector(
+                onTap: selectImage,
                 child: DottedBorder(
                   color: Pallete.borderColor,
                   dashPattern: const [10, 4],
