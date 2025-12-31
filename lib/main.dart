@@ -1,8 +1,8 @@
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/core/theme/theme.dart';
-//import 'package:client/features/auth/view/pages/signin_page.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
 import 'package:client/features/home/view/pages/home_page.dart';
+import 'package:client/features/home/view/pages/upload_songs_page.dart';
 import 'package:flutter/material.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +26,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Music App',
       theme: AppTheme.darkThemeMode,
-      home: currentUser == null ? const SignupPage() : HomePage(),
+      home: currentUser == null ? const SignupPage() : UploadSongsPage(),
       debugShowCheckedModeBanner: false,
     );
   }
