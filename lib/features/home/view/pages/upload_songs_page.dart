@@ -12,6 +12,7 @@ class UploadSongsPage extends ConsumerStatefulWidget {
 }
 
 class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +62,14 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               onTap: () {},
             ),
             const SizedBox(height: 20),
+              CustomField(
+              hintText: 'Artist',
+              controller: controller,
+              
+              autofocus: false,
+              
+            ),
+
           ],
         ),
       ),
