@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:client/core/theme/app_pallete.dart';
+import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/custom_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,9 +19,14 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
   final songNameController = TextEditingController();
   final artistController = TextEditingController();
   Color selectedColor = Pallete.cardColor;
+  File? seletedImage;
+  File? seletedAudio;
 
   void selectAudio() {}
-  void selectImage() {}
+  void selectImage() async {
+    final pickedImage = await pickImage();
+    if (pickedImage != null) {}
+  }
 
   @override
   void dispose() {
