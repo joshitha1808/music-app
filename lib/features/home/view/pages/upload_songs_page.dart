@@ -70,6 +70,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
                         height: 150,
                         width: double.infinity,
                         child: ClipRRect(
+                          borderRadius: BorderRadiusGeometry.circular(10),
                           child: Image.file(seletedImage!, fit: BoxFit.cover),
                         ),
                       )
