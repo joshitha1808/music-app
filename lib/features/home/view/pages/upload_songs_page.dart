@@ -17,8 +17,8 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
   final artistController = TextEditingController();
   Color selectedColor = Pallete.cardColor;
 
-  
-  void selectImage(){}
+  void selectAudio() {}
+  void selectImage() {}
 
   @override
   void dispose() {
