@@ -12,10 +12,16 @@ class UploadSongsPage extends ConsumerStatefulWidget {
 }
 
 class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
-  final songNameController=TextEditingController();
-  final artistController=TextEditingController();
-  
-  
+  final songNameController = TextEditingController();
+  final artistController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    songNameController.dispose();
+    artistController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,14 +71,12 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               onTap: () {},
             ),
             const SizedBox(height: 20),
-              CustomField(
+            CustomField(
               hintText: 'Artist',
               controller: controller,
-              
-              autofocus: false,
-              
-            ),
 
+              autofocus: false,
+            ),
           ],
         ),
       ),
