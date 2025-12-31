@@ -27,14 +27,16 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
       body: Column(
         children: [
           DottedBorder(
-            child: Column(
-              children: [
-                Icon(Icons.folder_open, size: 40, color: Colors.white),
-                Text(
-                  'Select the thumbnail for your song',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
+            child: SizedBox(
+              child: Column(
+                children: [
+                  Icon(Icons.folder_open, size: 40, color: Colors.white),
+                  Text(
+                    'Select the thumbnail for your song',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
