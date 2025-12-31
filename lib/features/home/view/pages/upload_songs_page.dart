@@ -34,6 +34,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.folder_open, size: 40, color: Colors.white),
+                  SizedBox(height: 15),
                   Text(
                     'Select the thumbnail for your song',
                     style: TextStyle(color: Colors.white),
