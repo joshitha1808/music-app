@@ -31,7 +31,7 @@ Future<File?> pickImage() async {
     );
 
     if (filePickerRes != null) {
-      String? filePath = filePickerRes!.files.first.xFile.path;
+      return File(filePickerRes.files.first.xFile.path);
     }
     return null;
   } catch (e) {
