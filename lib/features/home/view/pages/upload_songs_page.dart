@@ -22,7 +22,15 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
   File? seletedImage;
   File? seletedAudio;
 
-  void selectAudio() {}
+  void selectAudio() async {
+    final pickedAudio = await pickImage();
+    if (pickedAudio != null) {
+      setState(() {
+        seletedAudio = pickedAudio;
+      });
+    }
+  }
+
   void selectImage() async {
     final pickedImage = await pickImage();
     if (pickedImage != null) {
@@ -34,9 +42,9 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
 
   @override
   void dispose() {
-    super.dispose();
     songNameController.dispose();
     artistController.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,7 +52,6 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Pallete.backgroundColor,
-
         title: Center(
           child: const Text(
             'Upload Songs',
@@ -70,7 +77,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
                         height: 150,
                         width: double.infinity,
                         child: ClipRRect(
-                          borderRadius: BorderRadiusGeometry.circular(10),
+                          borderRadius: BorderRadius.circular(10),
                           child: Image.file(seletedImage!, fit: BoxFit.cover),
                         ),
                       )
@@ -80,7 +87,6 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
                         radius: const Radius.circular(10),
                         borderType: BorderType.RRect,
                         strokeCap: StrokeCap.round,
-
                         child: SizedBox(
                           height: 150,
                           width: double.infinity,
