@@ -76,6 +76,11 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               controller: artistController,
               autofocus: false,
             ),
+            CustomField(
+              hintText: 'Song Name',
+              controller: songNameController,
+              autofocus: false,
+            ),
           ],
         ),
       ),
