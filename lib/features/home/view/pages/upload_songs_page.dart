@@ -36,6 +36,12 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
             style: TextStyle(color: Colors.white),
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.check, color: Colors.white),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
