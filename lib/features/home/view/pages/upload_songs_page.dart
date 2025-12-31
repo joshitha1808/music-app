@@ -3,6 +3,7 @@ import 'package:client/core/widgets/custom_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flex_color_picker/flex_color_picker.dart';
 
 class UploadSongsPage extends ConsumerStatefulWidget {
   const UploadSongsPage({super.key});
@@ -14,6 +15,7 @@ class UploadSongsPage extends ConsumerStatefulWidget {
 class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
   final songNameController = TextEditingController();
   final artistController = TextEditingController();
+  Color selectedColor = Pallete.cardColor;
 
   @override
   void dispose() {
@@ -83,6 +85,14 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               autofocus: false,
             ),
             SizedBox(height: 20),
+            ColorPicker(
+              color: selectedColor,
+              onColorChanged: (Color color) {
+                setState(() {
+                  selectedColor = color;
+                });
+              },
+            ),
           ],
         ),
       ),
