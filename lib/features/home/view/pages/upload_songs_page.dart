@@ -28,6 +28,8 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
         children: [
           DottedBorder(
             child: SizedBox(
+              height: 150,
+              width: double.infinity,
               child: Column(
                 children: [
                   Icon(Icons.folder_open, size: 40, color: Colors.white),
