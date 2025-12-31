@@ -1,6 +1,6 @@
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/core/theme/theme.dart';
-import 'package:client/features/auth/view/pages/signin_page.dart';
+//import 'package:client/features/auth/view/pages/signin_page.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
 import 'package:client/features/home/view/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final container = ProviderContainer();
   await container.read(authViewModelProvider.notifier).initSharedPreferences();
-  final userModel = await container
-      .read(authViewModelProvider.notifier)
-      .getData();
+  await container.read(authViewModelProvider.notifier).getData();
 
   runApp(UncontrolledProviderScope(container: container, child: const MyApp()));
 }
