@@ -63,26 +63,28 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              DottedBorder(
-                color: Pallete.borderColor,
-                dashPattern: const [10, 4],
-                radius: const Radius.circular(10),
-                borderType: BorderType.RRect,
-                strokeCap: StrokeCap.round,
+              GestureDetector(
+                child: DottedBorder(
+                  color: Pallete.borderColor,
+                  dashPattern: const [10, 4],
+                  radius: const Radius.circular(10),
+                  borderType: BorderType.RRect,
+                  strokeCap: StrokeCap.round,
 
-                child: SizedBox(
-                  height: 150,
-                  width: double.infinity,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.folder_open, size: 40, color: Colors.white),
-                      SizedBox(height: 15),
-                      Text(
-                        'Select the thumbnail for your song',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
+                  child: SizedBox(
+                    height: 150,
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.folder_open, size: 40, color: Colors.white),
+                        SizedBox(height: 15),
+                        Text(
+                          'Select the thumbnail for your song',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
