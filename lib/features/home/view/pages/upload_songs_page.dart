@@ -58,7 +58,9 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               controller: null,
               readOnly: true,
               autofocus: false,
+              onTap: (){},
             ),
+           
           ],
         ),
       ),
