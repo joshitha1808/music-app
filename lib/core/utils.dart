@@ -9,7 +9,7 @@ void showSnackBar(BuildContext context, String message) {
   messenger.showSnackBar(SnackBar(content: Text(message)));
 }
 
-Future<File?> pickAudioFile() async {
+Future<File?> pickAudio() async {
   try {
     final filePickerRes = await FilePicker.platform.pickFiles(
       type: FileType.audio,
