@@ -82,6 +82,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               controller: songNameController,
               autofocus: false,
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),
