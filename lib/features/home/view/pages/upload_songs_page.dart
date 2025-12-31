@@ -27,6 +27,9 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
       body: Column(
         children: [
           DottedBorder(
+            color: Pallete.borderColor,
+            dashPattern: const [10, 4],
+
             child: SizedBox(
               height: 150,
               width: double.infinity,
