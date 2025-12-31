@@ -87,6 +87,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               ),
               SizedBox(height: 20),
               ColorPicker(
+                pickersEnabled: const {ColorPickerType.wheel: true},
                 color: selectedColor,
                 onColorChanged: (Color color) {
                   setState(() {
