@@ -33,6 +33,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               dashPattern: const [10, 4],
               radius: const Radius.circular(10),
               borderType: BorderType.RRect,
+              strokeCap: StrokeCap.round,
 
               child: SizedBox(
                 height: 150,
