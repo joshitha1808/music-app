@@ -1,6 +1,7 @@
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:dotted_border/dotted_border.dart';
 
 class UploadSongsPage extends ConsumerStatefulWidget {
   const UploadSongsPage({super.key});
@@ -22,6 +23,21 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
             style: TextStyle(color: Colors.white),
           ),
         ),
+      ),
+      body: Column(
+        children: [
+          DottedBorder(
+            child: Column(
+              children: [
+                Icon(Icons.folder_open, size: 40, color: Colors.white),
+                Text(
+                  'Select the thumbnail for your song',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
