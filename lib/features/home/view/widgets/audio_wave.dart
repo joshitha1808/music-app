@@ -15,10 +15,16 @@ class _AudioWaveState extends State<AudioWave> {
   final PlayerController playerController = PlayerController();
   bool isPlaying = false;
   bool isCompleted = false;
+  int currentPosition = 0;
+
   @override
   void initState() {
     super.initState();
     initAudioPlayer();
+
+    playerController.onCurrentDurationChanged.listen((duration) {
+      currentPosition = duration;
+    });
 
     playerController.onPlayerStateChanged.listen((state) {
       if (state == PlayerState.playing) {
@@ -45,9 +51,19 @@ class _AudioWaveState extends State<AudioWave> {
   Future<void> playAndPause() async {
     if (isPlaying) {
       await playerController.pausePlayer();
-    } else {
-      await playerController.startPlayer();
+      return;
     }
+
+    if (isCompleted) {
+      await playerController.preparePlayer(
+        path: widget.path,
+        shouldExtractWaveform: false,
+      );
+      await playerController.seekTo(currentPosition);
+      isCompleted = false;
+    }
+
+    await playerController.startPlayer();
   }
 
   @override
