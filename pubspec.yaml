@@ -57,6 +57,7 @@ dev_dependencies:
   dotted_border: ^2.1.0
   flex_color_picker: ^3.7.2
   file_picker: ^10.3.8
+  audio_waveforms: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
