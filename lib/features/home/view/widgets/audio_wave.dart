@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audio_waveforms/audio_waveforms.dart';
 
 class AudioWave extends StatefulWidget {
   final String path;
@@ -9,6 +10,7 @@ class AudioWave extends StatefulWidget {
 }
 
 class _AudioWaveState extends State<AudioWave> {
+  final PlayerController playerController = PlayerController();
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
