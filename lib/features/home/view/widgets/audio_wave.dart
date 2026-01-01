@@ -14,25 +14,21 @@ class AudioWave extends StatefulWidget {
 class _AudioWaveState extends State<AudioWave> {
   final PlayerController playerController = PlayerController();
   bool isPlaying = false;
-
+  bool isCompleted = false;
   @override
   void initState() {
     super.initState();
     initAudioPlayer();
 
-    playerController.onPlayerStateChanged.listen((state) async {
+    playerController.onPlayerStateChanged.listen((state) {
       if (state == PlayerState.playing) {
         isPlaying = true;
+        isCompleted = false;
+      } else if (state == PlayerState.stopped) {
+        isPlaying = false;
+        isCompleted = true;
       } else {
         isPlaying = false;
-      }
-
-      if (state == PlayerState.stopped) {
-        await playerController.preparePlayer(
-          path: widget.path,
-          shouldExtractWaveform: true,
-        );
-        await playerController.seekTo(0);
       }
 
       if (mounted) setState(() {});
