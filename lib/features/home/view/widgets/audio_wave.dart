@@ -24,11 +24,12 @@ class _AudioWaveState extends State<AudioWave> {
   }
 
   Future<void> playAndPause() async {
-    if (!playerController.playerState.isPlaying) {
-      await playerController.stopPlayer();
-    } else if (!playerController.playerState.isPaused) {
+    if (playerController.playerState.isPlaying) {
       await playerController.pausePlayer();
+    } else {
+      await playerController.startPlayer();
     }
+
     setState(() {});
   }
 
@@ -50,9 +51,11 @@ class _AudioWaveState extends State<AudioWave> {
                 : CupertinoIcons.play_arrow_solid,
           ),
         ),
-        AudioFileWaveforms(
-          size: const Size(double.infinity, 100),
-          playerController: playerController,
+        Expanded(
+          child: AudioFileWaveforms(
+            size: const Size(double.infinity, 100),
+            playerController: playerController,
+          ),
         ),
       ],
     );
