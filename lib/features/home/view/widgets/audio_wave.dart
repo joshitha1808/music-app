@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:audio_waveforms/audio_waveforms.dart';
+import 'package:flutter/material.dart';
 
 class AudioWave extends StatefulWidget {
   final String path;
@@ -20,6 +20,15 @@ class _AudioWaveState extends State<AudioWave> {
 
   void initAudioPlayer() async {
     await playerController.preparePlayer(path: widget.path);
+  }
+
+  Future<void> playAndPause() async {
+    if (!playerController.playerState.isPlaying) {
+      await playerController.stopPlayer();
+    } else if (!playerController.playerState.isPaused) {
+      await playerController.pausePlayer();
+    }
+    setState(() {});
   }
 
   @override
