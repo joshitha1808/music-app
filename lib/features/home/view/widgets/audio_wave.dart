@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class AudioWave extends StatefulWidget {
   final String path;
+
   const AudioWave({super.key, required this.path});
 
   @override
@@ -12,34 +13,45 @@ class AudioWave extends StatefulWidget {
 
 class _AudioWaveState extends State<AudioWave> {
   final PlayerController playerController = PlayerController();
+  bool isPlaying = false;
 
   @override
   void initState() {
     super.initState();
+    initAudioPlayer();
 
     playerController.onPlayerStateChanged.listen((state) async {
-      if (state == PlayerState.stopped) {
-        await playerController.seekTo(0);
-        setState(() {});
+      if (state == PlayerState.playing) {
+        isPlaying = true;
+      } else {
+        isPlaying = false;
       }
+
+      if (state == PlayerState.stopped) {
+        await playerController.preparePlayer(
+          path: widget.path,
+          shouldExtractWaveform: true,
+        );
+        await playerController.seekTo(0);
+      }
+
+      if (mounted) setState(() {});
     });
   }
 
-  void initAudioPlayer() async {
-    await playerController.preparePlayer(path: widget.path);
+  Future<void> initAudioPlayer() async {
+    await playerController.preparePlayer(
+      path: widget.path,
+      shouldExtractWaveform: true,
+    );
   }
 
   Future<void> playAndPause() async {
-    if (playerController.playerState == PlayerState.stopped) {
-      await playerController.seekTo(0);
-      await playerController.startPlayer();
-    } else if (playerController.playerState == PlayerState.playing) {
+    if (isPlaying) {
       await playerController.pausePlayer();
     } else {
       await playerController.startPlayer();
     }
-
-    setState(() {});
   }
 
   @override
@@ -55,7 +67,7 @@ class _AudioWaveState extends State<AudioWave> {
         IconButton(
           onPressed: playAndPause,
           icon: Icon(
-            playerController.playerState.isPlaying
+            isPlaying
                 ? CupertinoIcons.pause_solid
                 : CupertinoIcons.play_arrow_solid,
           ),
