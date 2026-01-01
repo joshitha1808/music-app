@@ -93,6 +93,7 @@ class _AudioWaveState extends State<AudioWave> {
               fixedWaveColor: Pallete.borderColor,
               liveWaveColor: Pallete.gradient2,
               spacing: 6,
+              showSeekLine: false,
             ),
           ),
         ),
