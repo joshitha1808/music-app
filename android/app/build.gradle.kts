@@ -4,18 +4,6 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
-
-configuration.all{
-    resolutionStrategy{
-        eachDependency{
-            if((requested.group=="org.jetbrains.kotlin")&&(requested.name.startsWith("kotlin-stdlib"))){
-                userVersion("1.8.0")
-
-            }
-        }
-    }
-}
-
 android {
     namespace = "com.example.client"
     compileSdk = flutter.compileSdkVersion
@@ -35,7 +23,7 @@ android {
         applicationId = "com.example.client"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 21
+        minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
