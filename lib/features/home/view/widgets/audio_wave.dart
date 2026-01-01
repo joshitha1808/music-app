@@ -11,6 +11,17 @@ class AudioWave extends StatefulWidget {
 
 class _AudioWaveState extends State<AudioWave> {
   final PlayerController playerController = PlayerController();
+
+  @override
+  void initState() {
+    super.initState();
+    initAudioPlayer();
+  }
+
+  void initAudioPlayer() async {
+    await playerController.preparePlayer(path: widget.path);
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
