@@ -16,7 +16,13 @@ class _AudioWaveState extends State<AudioWave> {
   @override
   void initState() {
     super.initState();
-    initAudioPlayer();
+
+    playerController.onPlayerStateChanged.listen((state) async {
+      if (state == PlayerState.stopped) {
+        await playerController.seekTo(0);
+        setState(() {});
+      }
+    });
   }
 
   void initAudioPlayer() async {
