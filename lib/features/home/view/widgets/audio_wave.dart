@@ -23,7 +23,16 @@ class _AudioWaveState extends State<AudioWave> {
   }
 
   @override
+  void dispose() {
+    playerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return AudioFileWaveforms(
+      size: const Size(double.infinity, 100),
+      playerController: playerController,
+    );
   }
 }
