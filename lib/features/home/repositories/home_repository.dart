@@ -9,8 +9,8 @@ class HomeRepository {
     );
     request
       ..files.addAll([
-        await http.MultipartFile.fromPath('song', '/Users/'),
-        await http.MultipartFile.fromPath('thumbnail', '/Users/'),
+        await http.MultipartFile.fromPath('song', '/https://prosearch.tribeofnoise.com/artists/show/84070/43981/'),
+        await http.MultipartFile.fromPath('thumbnail', 'https://prosearch.tribeofnoise.com/artists/show/24142/43452/'),
       ])
       ..fields.addAll({
         'artist': 'Taylor',
@@ -21,5 +21,7 @@ class HomeRepository {
         'x-auth-token':
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiMjgzYjMyLWVjNWEtNGYxNy1iMmRlLTRkZDBmYjgwNjFhOSJ9.qIusTp49iEiX0z_1uGwYFjIAt7vAX-7KKKkRthRWyrg',
       });
+      final res=await request.send();
+      print(res);
   }
 }
