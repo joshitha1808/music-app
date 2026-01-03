@@ -63,7 +63,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
         actions: [
           IconButton(
             onPressed: () async {
-              await HomeRepository().uploadSong();
+              await HomeRepository().uploadSong(seletedImage!, seletedAudio!);
             },
             icon: Icon(Icons.check, color: Colors.white),
           ),
