@@ -12,10 +12,7 @@ class HomeRepository {
     request
       ..files.addAll([
         await http.MultipartFile.fromPath('song', selectedAudio.path),
-        await http.MultipartFile.fromPath(
-          'thumbnail',
-          'file:///C:/Users/veera/Downloads/lonely-elephant-against-sunset-beautiful-sun-clouds-savannah-serengeti-national-park-africa-tanzania-artistic-imag-image-106950644.webp',
-        ),
+        await http.MultipartFile.fromPath('thumbnail', selectedImage.path),
       ])
       ..fields.addAll({
         'artist': 'Taylor',
