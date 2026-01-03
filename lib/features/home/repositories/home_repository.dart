@@ -2,7 +2,8 @@ import 'Package:http/http.dart' as http;
 import 'package:client/core/server_constants.dart';
 
 class HomeRepository {
-  Future<void> uploadSong() async {
+  Future<void> uploadSong(File selectedImage,
+  File selectedAudio) async {
     final request = http.MultipartRequest(
       'POST',
       Uri.parse('${ServerConstant.serverURL}/song/upload'),
