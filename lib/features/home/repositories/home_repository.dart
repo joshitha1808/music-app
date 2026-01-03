@@ -11,13 +11,10 @@ class HomeRepository {
     );
     request
       ..files.addAll([
-        await http.MultipartFile.fromPath(
-          'song',
-          '/https://prosearch.tribeofnoise.com/artists/show/84070/43981/',
-        ),
+        await http.MultipartFile.fromPath('song', selectedAudio.path),
         await http.MultipartFile.fromPath(
           'thumbnail',
-          'https://prosearch.tribeofnoise.com/artists/show/24142/43452/',
+          'file:///C:/Users/veera/Downloads/lonely-elephant-against-sunset-beautiful-sun-clouds-savannah-serengeti-national-park-africa-tanzania-artistic-imag-image-106950644.webp',
         ),
       ])
       ..fields.addAll({
