@@ -18,7 +18,7 @@ class HomeRepository {
     required File selectedAudio,
     required File selectedThumbnail,
     required String songName,
-    required Color selectedColor,
+    required String hexCode,
   }) async {
     try {
       final request = http.MultipartRequest(
