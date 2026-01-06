@@ -1,3 +1,7 @@
+import 'dart:io';
+import 'dart:ui';
+
+import 'package:client/features/home/view/pages/upload_songs_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'home_viewmodel.g.dart';
 
@@ -7,4 +11,11 @@ class HomeViewmodel extends _$HomeViewmodel {
   AsyncValue? build() {
     return null;
   }
+
+  Future<void> UploadSongs({
+    required File selectedAudio,
+    required File selectedThumbnail,
+    required String songName,
+    required Color selectedColor,
+    }){}
 }
