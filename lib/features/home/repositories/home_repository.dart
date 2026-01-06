@@ -30,6 +30,10 @@ class HomeRepository {
               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiMjgzYjMyLWVjNWEtNGYxNy1iMmRlLTRkZDBmYjgwNjFhOSJ9.qIusTp49iEiX0z_1uGwYFjIAt7vAX-7KKKkRthRWyrg',
         });
       final res = await request.send();
+
+      if (res.statusCode != 200) {
+        return Left(AppFailure(await res.stream.bytesToString()));
+      }
       return Right(await res.stream.bytesToString());
     } catch (e) {
       return Left(AppFailure(e.toString()));
