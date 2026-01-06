@@ -20,5 +20,8 @@ class HomeViewmodel extends _$HomeViewmodel {
     required File selectedThumbnail,
     required String songName,
     required Color selectedColor,
-    }){}
+    })async{
+      state=const AsyncValue.loading();
+      final res=_homeRepository.uploadSong(selectedImage, selectedAudio);
+    }
 }
