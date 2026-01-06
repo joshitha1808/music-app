@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'Package:http/http.dart' as http;
 import 'package:client/core/server_constants.dart';
@@ -8,16 +9,17 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'home_repository.g.dart';
 
 @riverpod
-HomeRepository homeRepository(HomeRepositoryRef ref){
+HomeRepository homeRepository(HomeRepositoryRef ref) {
   return HomeRepository();
-
 }
 
 class HomeRepository {
-  Future<Either<AppFailure, String>> uploadSong(
-    File selectedImage,
-    File selectedAudio,
-  ) async {
+  Future<Either<AppFailure, String>> uploadSong({
+    required File selectedAudio,
+    required File selectedThumbnail,
+    required String songName,
+    required Color selectedColor,
+  }) async {
     try {
       final request = http.MultipartRequest(
         'POST',
