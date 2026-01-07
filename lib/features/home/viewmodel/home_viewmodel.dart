@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:client/core/utils.dart';
 import 'package:client/features/home/repositories/home_repository.dart';
 import 'package:client/features/home/view/pages/upload_songs_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -23,6 +24,6 @@ class HomeViewmodel extends _$HomeViewmodel {
     required Color selectedColor,
     })async{
       state=const AsyncValue.loading();
-      final res=_homeRepository.uploadSong(selectedAudio: selectedAudio, selectedThumbnail: selectedThumbnail, songName: songName, artist: artist, hexCode: hexCode, token: token)
+      final res=_homeRepository.uploadSong(selectedAudio: selectedAudio, selectedThumbnail: selectedThumbnail, songName: songName, artist: artist, hexCode: rgbToHex(selectedColor), token: token)
     }
 }
