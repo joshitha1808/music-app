@@ -18,6 +18,7 @@ class HomeRepository {
     required File selectedAudio,
     required File selectedThumbnail,
     required String songName,
+    required String artist,
     required String hexCode,
   }) async {
     try {
@@ -28,7 +29,10 @@ class HomeRepository {
       request
         ..files.addAll([
           await http.MultipartFile.fromPath('song', selectedAudio.path),
-          await http.MultipartFile.fromPath('thumbnail', selectedThumbnail.path),
+          await http.MultipartFile.fromPath(
+            'thumbnail',
+            selectedThumbnail.path,
+          ),
         ])
         ..fields.addAll({
           'artist': artist,
