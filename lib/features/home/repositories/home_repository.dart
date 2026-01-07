@@ -40,10 +40,7 @@ class HomeRepository {
           'song_name': songName,
           'hex_code': hexCode,
         })
-        ..headers.addAll({
-          'x-auth-token':
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiMjgzYjMyLWVjNWEtNGYxNy1iMmRlLTRkZDBmYjgwNjFhOSJ9.qIusTp49iEiX0z_1uGwYFjIAt7vAX-7KKKkRthRWyrg',
-        });
+        ..headers.addAll({'x-auth-token': token});
       final res = await request.send();
 
       if (res.statusCode != 200) {
