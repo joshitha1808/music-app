@@ -31,9 +31,9 @@ class HomeRepository {
           await http.MultipartFile.fromPath('thumbnail', selectedThumbnail.path),
         ])
         ..fields.addAll({
-          'artist': 'Taylor',
-          'song_name': 'Whoosh',
-          'hex_code': 'FFFFFF',
+          'artist': artist,
+          'song_name': songName,
+          'hex_code': hexCode,
         })
         ..headers.addAll({
           'x-auth-token':
