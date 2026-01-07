@@ -28,7 +28,7 @@ class HomeRepository {
       request
         ..files.addAll([
           await http.MultipartFile.fromPath('song', selectedAudio.path),
-          await http.MultipartFile.fromPath('thumbnail', selectedImage.path),
+          await http.MultipartFile.fromPath('thumbnail', selectedThumbnail.path),
         ])
         ..fields.addAll({
           'artist': 'Taylor',
