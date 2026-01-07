@@ -4,6 +4,7 @@ import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/custom_field.dart';
 import 'package:client/features/home/view/widgets/audio_wave.dart';
+import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -62,8 +63,17 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
         actions: [
           IconButton(
             onPressed: () async {
-              
+              ref
+                  .read(homeViewmodelProvider.notifier)
+                  .UploadSongs(
+                    selectedAudio: seletedAudio,
+                    selectedThumbnail: selectedImage,
+                    songName: songNameController.text,
+                    artist: artistController.text,
+                    selectedColor: selectedColor,
+                  );
             },
+
             icon: Icon(Icons.check, color: Colors.white),
           ),
         ],
