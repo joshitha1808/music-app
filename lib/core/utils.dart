@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'dart:io';
 
+extension HexColor on Color {
+  String toHex() {
+    return '#${red.toRadixString(16).padLeft(2,'0')}'
+           '${green.toRadixString(16).padLeft(2,'0')}'
+           '${blue.toRadixString(16).padLeft(2,'0')}';
+  }
+}
+
 void showSnackBar(BuildContext context, String message) {
   final messenger = ScaffoldMessenger.of(context);
 
@@ -37,4 +45,4 @@ Future<File?> pickImage() async {
   } catch (e) {
     return null;
   }
-}
+  }
