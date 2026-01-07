@@ -19,7 +19,7 @@ class HomeViewmodel extends _$HomeViewmodel {
     required File selectedAudio,
     required File selectedThumbnail,
     required String songName,
-    
+    required String artist,
     required Color selectedColor,
     })async{
       state=const AsyncValue.loading();
