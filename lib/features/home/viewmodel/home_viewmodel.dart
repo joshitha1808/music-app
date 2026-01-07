@@ -5,6 +5,8 @@ import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/features/home/repositories/home_repository.dart';
 import 'package:client/features/home/view/pages/upload_songs_page.dart';
+import 'package:flutter/rendering.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'home_viewmodel.g.dart';
 
@@ -33,5 +35,11 @@ class HomeViewmodel extends _$HomeViewmodel {
       hexCode: rgbToHex(selectedColor),
       token: ref.read(currentUserNotifierProvider)!.token,
     );
+    
+    final val = switch (res) {
+      Left(value: final l) => AsyncValue.error(l.message, StackTrace.current),
+      Right(value: final r) => AsyncValue.data(r),
+    };
+    print(val);
   }
 }
