@@ -35,8 +35,8 @@ class HomeViewmodel extends _$HomeViewmodel {
       hexCode: rgbToHex(selectedColor),
       token: ref.read(currentUserNotifierProvider)!.token,
     );
-    
-    final val = switch (res) {
+    final result = await res;
+    final val = switch (result) {
       Left(value: final l) => AsyncValue.error(l.message, StackTrace.current),
       Right(value: final r) => AsyncValue.data(r),
     };
