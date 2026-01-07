@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/custom_field.dart';
-import 'package:client/features/home/repositories/home_repository.dart';
 import 'package:client/features/home/view/widgets/audio_wave.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -63,7 +62,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
         actions: [
           IconButton(
             onPressed: () async {
-              await HomeRepository().uploadSong(seletedImage!, seletedAudio!);
+              
             },
             icon: Icon(Icons.check, color: Colors.white),
           ),
