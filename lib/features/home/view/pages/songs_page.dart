@@ -24,7 +24,7 @@ class SongsPage extends ConsumerWidget {
                 data: (songs) {
                   print(songs);
                   return SizedBox(
-                    
+                    height: 260,
                     child: ListView.builder(itemCount: songs.length,
                       itemBuilder:(context,index){
                         return Column(
