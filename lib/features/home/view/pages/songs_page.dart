@@ -22,6 +22,7 @@ class SongsPage extends ConsumerWidget {
               .watch(getAllSongsProvider)
               .when(
                 data: (songs) {
+                  print(songs);
                   return Text('Hello');
                 },
                 error: (error, st) {
