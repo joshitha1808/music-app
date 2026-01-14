@@ -10,6 +10,9 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  int selectedIndex = 0;
+
+  
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(currentUserNotifierProvider);
