@@ -23,7 +23,11 @@ class _HomePageState extends ConsumerState<HomePage> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/home_filled.png'),
+            icon: Image.asset(
+              selectedIndex == 0
+                  ? 'assets/images/home_filled.png'
+                  : 'assets/images/home_unfilled.png',
+            ),
             label: 'Home',
           ),
 
