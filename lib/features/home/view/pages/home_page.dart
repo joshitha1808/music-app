@@ -38,7 +38,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/images/library.png',
-              color: selectedIndex == 0
+              color: selectedIndex == 1
                   ? Pallete.whiteColor
                   : Pallete.inactiveBottomBarItemColor,
             ),
