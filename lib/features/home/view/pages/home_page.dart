@@ -12,13 +12,18 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   int selectedIndex = 0;
 
-  
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(currentUserNotifierProvider);
     print(user);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: (Value) {
+          setState(() {
+            selectedIndex = Value;
+          });
+        },
         items: [
           BottomNavigationBarItem(
             icon: Image.asset('assets/images/home_filled.png'),
