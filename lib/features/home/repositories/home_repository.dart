@@ -68,9 +68,12 @@ class HomeRepository {
       }
       resBodyMap = resBodyMap as List;
 
+      List<SongModel> songs = [];
+
       for (final map in resBodyMap) {
         SongModel.fromMap(map);
       }
+      return Right(songs);
     } catch (e) {
       return Left(AppFailure(e.toString()));
     }
