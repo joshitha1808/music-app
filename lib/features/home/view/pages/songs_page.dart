@@ -6,6 +6,13 @@ class SongsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef Ref) {
-    return Column();
+    return Column(
+      children: [
+        Text(
+          'Latest today',
+          style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
+        ),
+      ],
+    );
   }
 }
