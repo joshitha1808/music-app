@@ -6,6 +6,6 @@ class SongsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef Ref) {
-    return const Placeholder();
+    return Container();
   }
 }
