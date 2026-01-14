@@ -25,21 +25,27 @@ class SongsPage extends ConsumerWidget {
                   print(songs);
                   return SizedBox(
                     height: 260,
-                    child: ListView.builder(itemCount: songs.length,
-                      itemBuilder:(context,index){
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: songs.length,
+                      itemBuilder: (context, index) {
                         return Column(
                           children: [
                             Container(
                               width: 180,
                               height: 180,
                               decoration: BoxDecoration(
-                                image: DecorationImage(image: NetworkImage(songs[index].thumbnail_url))
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    songs[index].thumbnail_url,
+                                  ),
+                                ),
                               ),
-                            )
+                            ),
                           ],
-                        )
-                    
-                      }),
+                        );
+                      },
+                    ),
                   );
                 },
                 error: (error, st) {
