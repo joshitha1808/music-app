@@ -19,6 +19,7 @@ class HomePage extends ConsumerWidget {
 
           BottomNavigationBarItem(
             icon: Image.asset('assets/images/library.png'),
+            label: 'Library',
           ),
         ],
       ),
