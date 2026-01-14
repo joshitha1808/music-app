@@ -4,7 +4,6 @@ import 'dart:ui';
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/features/home/repositories/home_repository.dart';
-import 'package:client/features/home/view/pages/upload_songs_page.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
