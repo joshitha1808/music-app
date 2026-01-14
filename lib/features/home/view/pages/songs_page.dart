@@ -29,21 +29,24 @@ class SongsPage extends ConsumerWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: songs.length,
                       itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Container(
-                              width: 180,
-                              height: 180,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                    songs[index].thumbnail_url,
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 180,
+                                height: 180,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                      songs[index].thumbnail_url,
+                                    ),
+                                    fit: BoxFit.cover,
                                   ),
-                                  fit: BoxFit.cover,
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         );
                       },
                     ),
