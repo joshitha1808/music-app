@@ -1,3 +1,4 @@
+import 'package:client/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,6 +28,9 @@ class _HomePageState extends ConsumerState<HomePage> {
               selectedIndex == 0
                   ? 'assets/images/home_filled.png'
                   : 'assets/images/home_unfilled.png',
+              color: selectedIndex == 0
+                  ? Pallete.whiteColor
+                  : Pallete.inactiveBottomBarItemColor,
             ),
             label: 'Home',
           ),
