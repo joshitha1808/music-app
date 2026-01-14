@@ -23,7 +23,21 @@ class SongsPage extends ConsumerWidget {
               .when(
                 data: (songs) {
                   print(songs);
-                  return Text('Hello');
+                  return ListView.builder(itemCount: songs.length,
+                    itemBuilder:(context,index){
+                      return Column(
+                        children: [
+                          Container(
+                            width: 180,
+                            height: 180,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(image: NetworkImage(songs[index].thumbnail_url))
+                            ),
+                          )
+                        ],
+                      )
+
+                    });
                 },
                 error: (error, st) {
                   return Center(child: Text(error.toString()));
