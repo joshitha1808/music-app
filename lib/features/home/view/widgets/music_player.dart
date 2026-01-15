@@ -108,9 +108,12 @@ class MusicPlayer extends ConsumerWidget {
             SizedBox(height: 15),
             Row(
               children: [
-                Image.asset(
-                  'assests/icons/suffle.png',
-                  color: Pallete.whiteColor,
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assests/icons/suffle.png',
+                    color: Pallete.whiteColor,
+                  ),
                 ),
               ],
             ),
