@@ -105,6 +105,7 @@ class MusicPlayer extends ConsumerWidget {
                 ),
               ],
             ),
+            SizedBox(height: 15),
           ],
         ),
       ),
