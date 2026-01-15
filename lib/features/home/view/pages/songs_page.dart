@@ -44,9 +44,11 @@ class SongsPage extends ConsumerWidget {
                                     ),
                                     fit: BoxFit.cover,
                                   ),
-                                  borderRadius: BorderRadius.circular(7);
+                                  borderRadius: BorderRadius.circular(7),
                                 ),
                               ),
+                              const SizedBox(height: 5),
+                              Text(songs[index].song_name),
                             ],
                           ),
                         );
