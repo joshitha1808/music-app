@@ -67,7 +67,7 @@ class MusicSlab extends ConsumerWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: songNotifier.playPause,
                         icon: Icon(
                           songNotifier.isPlaying
                               ? CupertinoIcons.pause_fill
