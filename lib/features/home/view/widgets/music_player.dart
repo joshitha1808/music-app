@@ -83,6 +83,7 @@ class MusicPlayer extends ConsumerWidget {
                       IconButton(
                         onPressed: () {},
                         icon: Icon(CupertinoIcons.heart),
+                        color: Pallete.whiteColor,
                       ),
                     ],
                   ),
