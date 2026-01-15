@@ -40,16 +40,14 @@ class SongsPage extends ConsumerWidget {
                                 height: 180,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: NetworkImage(
-                                      song.thumbnail_url,
-                                    ),
+                                    image: NetworkImage(song.thumbnail_url),
                                     fit: BoxFit.cover,
                                   ),
                                   borderRadius: BorderRadius.circular(7),
                                 ),
                               ),
                               const SizedBox(height: 5),
-                              Text(songs[index].song_name),
+                              Text(song.song_name),
                             ],
                           ),
                         );
