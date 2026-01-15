@@ -23,6 +23,7 @@ class CurrentSongNotifier extends _$CurrentSongNotifier {
         audioPlayer!.seek(Duration.zero);
         audioPlayer!.pause();
         isPlaying = false;
+        this.state = this.state?.copyWith(hex_code: this.state?.hex_code);
       }
     });
 
