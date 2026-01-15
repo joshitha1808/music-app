@@ -68,6 +68,7 @@ class MusicPlayer extends ConsumerWidget {
                 ],
               ),
             ),
+            Column(children: [Slider(value: 0.5, onChanged: (val) {})]),
           ],
         ),
       ),
