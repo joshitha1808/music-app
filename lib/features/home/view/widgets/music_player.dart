@@ -27,6 +27,9 @@ class MusicPlayer extends ConsumerWidget {
           leading: Transform.translate(
             offset: const Offset(-15, 0),
             child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Image.asset(
