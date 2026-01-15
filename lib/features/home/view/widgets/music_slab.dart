@@ -18,7 +18,6 @@ class MusicSlab extends ConsumerWidget {
     return Container(
       height: 66,
       width: MediaQuery.of(context).size.width,
-
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
