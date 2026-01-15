@@ -1,4 +1,5 @@
 import 'package:client/core/providers/current_song_notifier.dart';
+import 'package:client/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,6 +14,35 @@ class MusicSlab extends ConsumerWidget {
       return const SizedBox();
     }
 
-    return Container();
+    return Row(
+      children: [
+        Container(
+          width: 48,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(CurrentSong!.thumbnail_url),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Column(
+          children: [
+            Text(
+              CurrentSong.song_name,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            Text(
+              CurrentSong.artist,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Pallete.subtitleText,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
