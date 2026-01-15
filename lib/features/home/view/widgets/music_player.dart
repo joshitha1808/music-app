@@ -11,60 +11,63 @@ class MusicPlayer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final CurrentSong = ref.watch(currentSongNotifierProvider);
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(CurrentSong!.thumbnail_url),
-                    fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      child: Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(CurrentSong!.thumbnail_url),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 4,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          CurrentSong.song_name,
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            color: Pallete.whiteColor,
+            Expanded(
+              flex: 4,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            CurrentSong.song_name,
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                              color: Pallete.whiteColor,
+                            ),
                           ),
-                        ),
-                        Text(
-                          CurrentSong.artist,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Pallete.subtitleText,
+                          Text(
+                            CurrentSong.artist,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Pallete.subtitleText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Expanded(child: const SizedBox()),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(CupertinoIcons.heart),
-                    ),
-                  ],
-                ),
-              ],
+                        ],
+                      ),
+                      Expanded(child: const SizedBox()),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(CupertinoIcons.heart),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
