@@ -14,6 +14,15 @@ class MusicPlayer extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Scaffold(
+        appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Image.asset(
+              'assests/icons/pull-down-arrow.png',
+              color: Pallete.whiteColor,
+            ),
+          ),
+        ),
         body: Column(
           children: [
             Expanded(
