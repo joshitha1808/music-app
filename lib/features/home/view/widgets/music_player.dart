@@ -126,6 +126,7 @@ class MusicPlayer extends ConsumerWidget {
                   onPressed: () {},
                   icon: Icon(CupertinoIcons.play_circle_fill),
                   iconSize: 80,
+                  color: Pallete.whiteColor,
                 ),
               ],
             ),
