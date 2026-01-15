@@ -60,6 +60,18 @@ class SongsPage extends ConsumerWidget {
                                   maxLines: 1,
                                 ),
                               ),
+                              SizedBox(
+                                width: 180,
+                                child: Text(
+                                  song.artist,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              ),
                             ],
                           ),
                         );
