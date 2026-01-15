@@ -85,7 +85,10 @@ class MusicSlab extends ConsumerWidget {
           child: Container(
             width: 20,
             height: 2,
-            decoration: BoxDecoration(color: Pallete.whiteColor),
+            decoration: BoxDecoration(
+              color: Pallete.whiteColor,
+              borderRadius: BorderRadius.circular(7),
+            ),
           ),
         ),
         Positioned(
@@ -94,7 +97,10 @@ class MusicSlab extends ConsumerWidget {
           child: Container(
             width: MediaQuery.of(context).size.width - 32,
             height: 2,
-            decoration: BoxDecoration(color: Pallete.inactiveSeekColor),
+            decoration: BoxDecoration(
+              color: Pallete.inactiveSeekColor,
+              borderRadius: BorderRadius.circular(7),
+            ),
           ),
         ),
       ],
