@@ -55,6 +55,7 @@ class SongsPage extends ConsumerWidget {
                                   style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),
