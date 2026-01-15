@@ -54,11 +54,14 @@ class MusicSlab extends ConsumerWidget {
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(CupertinoIcons.heart),
+                    icon: Icon(CupertinoIcons.heart, color: Pallete.whiteColor),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(CupertinoIcons.play_fill),
+                    icon: Icon(
+                      CupertinoIcons.play_fill,
+                      color: Pallete.whiteColor,
+                    ),
                   ),
                 ],
               ),
