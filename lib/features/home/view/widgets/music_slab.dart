@@ -19,7 +19,10 @@ class MusicSlab extends ConsumerWidget {
     return Container(
       height: 66,
       width: MediaQuery.of(context).size.width - 16,
-      decoration: BoxDecoration(color: hexToColor(CurrentSong.hex_code)),
+      decoration: BoxDecoration(
+        color: hexToColor(CurrentSong.hex_code),
+        borderRadius: BorderRadius.circular(9),
+      ),
       padding: const EdgeInsets.all(9),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
