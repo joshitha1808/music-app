@@ -29,6 +29,7 @@ class MusicPlayer extends ConsumerWidget {
             child: InkWell(
               highlightColor: Pallete.transparentColor,
               focusColor: Pallete.transparentColor,
+              splashColor: Pallete.transparentColor,
               onTap: () {
                 Navigator.pop(context);
               },
