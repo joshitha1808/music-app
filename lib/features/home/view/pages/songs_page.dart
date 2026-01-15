@@ -47,7 +47,13 @@ class SongsPage extends ConsumerWidget {
                                 ),
                               ),
                               const SizedBox(height: 5),
-                              Text(song.song_name),
+                              Text(
+                                song.song_name,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
                             ],
                           ),
                         );
