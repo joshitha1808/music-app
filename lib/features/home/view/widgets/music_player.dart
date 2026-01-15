@@ -38,6 +38,7 @@ class MusicPlayer extends ConsumerWidget {
                   Row(
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             CurrentSong.song_name,
