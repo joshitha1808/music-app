@@ -68,7 +68,7 @@ class SongsPage extends ConsumerWidget {
                                   style: const TextStyle(
                                     color: Pallete.subtitleText,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w700,
+                                    fontWeight: FontWeight.w500,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   maxLines: 1,
