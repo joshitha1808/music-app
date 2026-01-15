@@ -79,6 +79,14 @@ class MusicSlab extends ConsumerWidget {
             ],
           ),
         ),
+        Positioned(
+          bottom: 0,
+          child: Container(
+            width: 20,
+            height: 2,
+            decoration: BoxDecoration(color: Pallete.whiteColor),
+          ),
+        ),
       ],
     );
   }
