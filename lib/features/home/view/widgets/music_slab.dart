@@ -31,6 +31,7 @@ class MusicSlab extends ConsumerWidget {
                 image: NetworkImage(CurrentSong!.thumbnail_url),
                 fit: BoxFit.cover,
               ),
+              borderRadius: BorderRadius.circular(9),
             ),
           ),
           const SizedBox(width: 8),
