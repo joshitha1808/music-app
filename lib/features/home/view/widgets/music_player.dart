@@ -12,11 +12,14 @@ class MusicPlayer extends ConsumerWidget {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(CurrentSong!.thumbnail_url),
-                fit: BoxFit.cover,
+          Expanded(
+            flex: 5,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(CurrentSong!.thumbnail_url),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
