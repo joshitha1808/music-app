@@ -30,6 +30,7 @@ class SongsPage extends ConsumerWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: songs.length,
                       itemBuilder: (context, index) {
+                        final song = songs[index];
                         return Padding(
                           padding: const EdgeInsets.only(left: 16),
                           child: Column(
