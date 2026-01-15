@@ -12,10 +12,10 @@ class CurrentSongNotifier extends _$CurrentSongNotifier {
     return null;
   }
 
-  void updateSong(SongModel song) {
+  void updateSong(SongModel song) async {
     audioPlayer = AudioPlayer();
 
     final audioSource = AudioSource.uri(Uri.parse(song.song_url));
-    audioPlayer!.setAudioSource(audioSource);
+    await audioPlayer!.setAudioSource(audioSource);
   }
 }
