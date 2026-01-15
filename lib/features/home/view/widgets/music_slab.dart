@@ -1,5 +1,6 @@
 import 'package:client/core/providers/current_song_notifier.dart';
 import 'package:client/core/theme/app_pallete.dart';
+import 'package:client/core/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,6 +19,7 @@ class MusicSlab extends ConsumerWidget {
     return Container(
       height: 66,
       width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(color: hexToColor(CurrentSong.hex_code)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
