@@ -155,6 +155,7 @@ class MusicPlayer extends ConsumerWidget {
                     color: Pallete.whiteColor,
                   ),
                 ),
+                Expanded(child: const SizedBox()),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Image.asset(
