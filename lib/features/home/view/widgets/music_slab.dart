@@ -99,8 +99,8 @@ class MusicSlab extends ConsumerWidget {
               bottom: 0,
               left: 8,
               child: Container(
-                width: 20,
                 height: 2,
+                width: sliderValue * (MediaQuery.of(context).size.width - 32),
                 decoration: BoxDecoration(
                   color: Pallete.whiteColor,
                   borderRadius: BorderRadius.circular(7),
