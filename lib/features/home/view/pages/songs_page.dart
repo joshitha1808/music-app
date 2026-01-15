@@ -41,7 +41,7 @@ class SongsPage extends ConsumerWidget {
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: NetworkImage(
-                                      songs[index].thumbnail_url,
+                                      song.thumbnail_url,
                                     ),
                                     fit: BoxFit.cover,
                                   ),
