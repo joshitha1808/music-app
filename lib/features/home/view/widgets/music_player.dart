@@ -26,6 +26,7 @@ class MusicPlayer extends ConsumerWidget {
                       image: NetworkImage(CurrentSong!.thumbnail_url),
                       fit: BoxFit.cover,
                     ),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
