@@ -81,6 +81,7 @@ class MusicSlab extends ConsumerWidget {
         ),
         Positioned(
           bottom: 0,
+          left: 8,
           child: Container(
             width: 20,
             height: 2,
