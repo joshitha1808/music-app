@@ -27,6 +27,8 @@ class MusicPlayer extends ConsumerWidget {
           leading: Transform.translate(
             offset: const Offset(-15, 0),
             child: InkWell(
+              highlightColor: Pallete.transparentColor,
+              focusColor: Pallete.transparentColor,
               onTap: () {
                 Navigator.pop(context);
               },
