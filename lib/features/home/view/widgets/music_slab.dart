@@ -1,5 +1,6 @@
 import 'package:client/core/providers/current_song_notifier.dart';
 import 'package:client/core/theme/app_pallete.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,6 +16,7 @@ class MusicSlab extends ConsumerWidget {
     }
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           width: 48,
@@ -39,6 +41,15 @@ class MusicSlab extends ConsumerWidget {
                 fontWeight: FontWeight.w500,
                 color: Pallete.subtitleText,
               ),
+            ),
+            Row(
+              children: [
+                IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.heart)),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(CupertinoIcons.play_fill),
+                ),
+              ],
             ),
           ],
         ),
