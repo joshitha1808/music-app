@@ -15,45 +15,53 @@ class MusicSlab extends ConsumerWidget {
       return const SizedBox();
     }
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Container(
-          width: 48,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(CurrentSong!.thumbnail_url),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Column(
-          children: [
-            Text(
-              CurrentSong.song_name,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            Text(
-              CurrentSong.artist,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Pallete.subtitleText,
+    return Container(
+      height: 66,
+      width: MediaQuery.of(context).size.width,
+
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            width: 48,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(CurrentSong!.thumbnail_url),
+                fit: BoxFit.cover,
               ),
             ),
-            Row(
-              children: [
-                IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.heart)),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(CupertinoIcons.play_fill),
+          ),
+          const SizedBox(width: 8),
+          Column(
+            children: [
+              Text(
+                CurrentSong.song_name,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                CurrentSong.artist,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Pallete.subtitleText,
                 ),
-              ],
-            ),
-          ],
-        ),
-      ],
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(CupertinoIcons.heart),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(CupertinoIcons.play_fill),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
