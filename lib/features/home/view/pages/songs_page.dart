@@ -1,3 +1,4 @@
+import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/widgets/loader.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,7 @@ class SongsPage extends ConsumerWidget {
                                 child: Text(
                                   song.artist,
                                   style: const TextStyle(
+                                    color: Pallete.subtitleText,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
                                     overflow: TextOverflow.ellipsis,
