@@ -105,8 +105,9 @@ class MusicPlayer extends ConsumerWidget {
                 ),
               ],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -144,6 +145,7 @@ class MusicPlayer extends ConsumerWidget {
                 ),
               ],
             ),
+            
           ],
         ),
       ),
