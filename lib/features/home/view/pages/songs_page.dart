@@ -44,6 +44,7 @@ class SongsPage extends ConsumerWidget {
                                     ),
                                     fit: BoxFit.cover,
                                   ),
+                                  borderRadius: BorderRadius.circular(7);
                                 ),
                               ),
                             ],
