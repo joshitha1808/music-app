@@ -49,13 +49,16 @@ class MusicPlayer extends ConsumerWidget {
               flex: 5,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(CurrentSong!.thumbnail_url),
-                      fit: BoxFit.cover,
+                child: Hero(
+                  tag: 'music-image',
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(CurrentSong!.thumbnail_url),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
