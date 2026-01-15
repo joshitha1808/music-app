@@ -78,6 +78,7 @@ class MusicPlayer extends ConsumerWidget {
                     ),
                     thumbColor: Pallete.whiteColor,
                     trackHeight: 4,
+                    overlayShape: SliderComponentShape.noOverlay,
                   ),
                   child: Slider(value: 0.5, onChanged: (val) {}),
                 ),
