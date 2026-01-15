@@ -145,7 +145,25 @@ class MusicPlayer extends ConsumerWidget {
                 ),
               ],
             ),
-            
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assests/icons/connect-device.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assests/icons/playlist.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
