@@ -128,6 +128,13 @@ class MusicPlayer extends ConsumerWidget {
                   iconSize: 80,
                   color: Pallete.whiteColor,
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assests/icons/next-song.png',
+                    color: Pallete.whiteColor,
+                  ),
+                ),
               ],
             ),
           ],
