@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: non_constant_identifier_names
 import 'dart:convert';
 
@@ -7,12 +8,14 @@ class SongModel {
   final String artist;
   final String thumbnail_url;
   final String hex_code;
+  final String song_url;
   SongModel({
     required this.id,
     required this.song_name,
     required this.artist,
     required this.thumbnail_url,
     required this.hex_code,
+    required this.song_url,
   });
 
   SongModel copyWith({
@@ -21,6 +24,7 @@ class SongModel {
     String? artist,
     String? thumbnail_url,
     String? hex_code,
+    String? song_url,
   }) {
     return SongModel(
       id: id ?? this.id,
@@ -28,6 +32,7 @@ class SongModel {
       artist: artist ?? this.artist,
       thumbnail_url: thumbnail_url ?? this.thumbnail_url,
       hex_code: hex_code ?? this.hex_code,
+      song_url: song_url ?? this.song_url,
     );
   }
 
@@ -38,16 +43,18 @@ class SongModel {
       'artist': artist,
       'thumbnail_url': thumbnail_url,
       'hex_code': hex_code,
+      'song_url': song_url,
     };
   }
 
   factory SongModel.fromMap(Map<String, dynamic> map) {
     return SongModel(
-      id: map['id'] as String,
+      id: map['id'] ?? '',
       song_name: map['song_name'] ?? '',
       artist: map['artist'] ?? '',
       thumbnail_url: map['thumbnail_url'] ?? '',
       hex_code: map['hex_code'] ?? '',
+      song_url: map['song_url'] ?? '',
     );
   }
 
@@ -58,7 +65,7 @@ class SongModel {
 
   @override
   String toString() {
-    return 'SongModel(id: $id, song_name: $song_name, artist: $artist, thumbnail_url: $thumbnail_url, hex_code: $hex_code)';
+    return 'SongModel(id: $id, song_name: $song_name, artist: $artist, thumbnail_url: $thumbnail_url, hex_code: $hex_code, song_url: $song_url)';
   }
 
   @override
@@ -69,7 +76,8 @@ class SongModel {
         other.song_name == song_name &&
         other.artist == artist &&
         other.thumbnail_url == thumbnail_url &&
-        other.hex_code == hex_code;
+        other.hex_code == hex_code &&
+        other.song_url == song_url;
   }
 
   @override
@@ -78,6 +86,7 @@ class SongModel {
         song_name.hashCode ^
         artist.hashCode ^
         thumbnail_url.hashCode ^
-        hex_code.hashCode;
+        hex_code.hashCode ^
+        song_url.hashCode;
   }
 }
