@@ -35,6 +35,8 @@ class MusicSlab extends ConsumerWidget {
           ),
           const SizedBox(width: 8),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 CurrentSong.song_name,
