@@ -18,7 +18,11 @@ class SongsPage extends ConsumerWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               'Latest today',
-              style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.w700,
+                color: Pallete.whiteColor,
+              ),
             ),
           ),
           ref
