@@ -138,7 +138,7 @@ class MusicPlayer extends ConsumerWidget {
                           Row(
                             children: [
                               Text(
-                                '${position?.inMinutes}:${position?.inSeconds}',
+                                '${position?.inMinutes}:${(position?.inSeconds ?? 0) < 10 ? '0${position?.inSeconds}' : position?.inSeconds}',
                                 style: const TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w300,
