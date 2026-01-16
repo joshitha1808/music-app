@@ -45,7 +45,7 @@ dependencies:
   audio_waveforms: ^2.0.1
   just_audio: ^0.10.5
   hive_ce: ^2.18.0
-  
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
