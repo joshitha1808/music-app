@@ -129,23 +129,26 @@ class MusicPlayer extends ConsumerWidget {
                               value: sliderValue,
                               min: 0,
                               max: 1,
-                              onChanged: (val) {},
+                              onChanged: (val) {
+                                sliderValue = val;
+                              },
+                              onChangeEnd: songNotifier.seek,
                             ),
                           ),
-                          const Row(
+                          Row(
                             children: [
                               Text(
-                                '0.05',
-                                style: TextStyle(
+                                '${position?.inMinutes}:${position?.inSeconds}',
+                                style: const TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w300,
                                   color: Pallete.subtitleText,
                                 ),
                               ),
-                              Expanded(child: SizedBox()),
+                              const Expanded(child: SizedBox()),
                               Text(
-                                '0.15',
-                                style: TextStyle(
+                                '${duration?.inMinutes}:${duration?.inSeconds}',
+                                style: const TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w300,
                                   color: Pallete.subtitleText,
