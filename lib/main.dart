@@ -10,7 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  await Hive.openBox('myBox');
+  await Hive.openBox('songsBox');
 
   final container = ProviderContainer();
   await container.read(authViewModelProvider.notifier).initSharedPreferences();
