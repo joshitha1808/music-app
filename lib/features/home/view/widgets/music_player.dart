@@ -37,7 +37,7 @@ class MusicPlayer extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Image.asset(
-                  'assests/icons/pull-down-arrow.png',
+                  'assets/images/pull-down-arrow.png',
                   color: Pallete.whiteColor,
                 ),
               ),
@@ -167,14 +167,14 @@ class MusicPlayer extends ConsumerWidget {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Image.asset(
-                          'assests/icons/suffle.png',
+                          'assets/images/shuffle.png',
                           color: Pallete.whiteColor,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Image.asset(
-                          'assests/icons/previous-song.png',
+                          'assets/images/previus-song.png',
                           color: Pallete.whiteColor,
                         ),
                       ),
@@ -192,14 +192,14 @@ class MusicPlayer extends ConsumerWidget {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Image.asset(
-                          'assests/icons/next-song.png',
+                          'assets/images/next-song.png',
                           color: Pallete.whiteColor,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Image.asset(
-                          'assests/icons/repeat.png',
+                          'assets/images/repeat.png',
                           color: Pallete.whiteColor,
                         ),
                       ),
@@ -211,7 +211,7 @@ class MusicPlayer extends ConsumerWidget {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Image.asset(
-                          'assests/icons/connect-device.png',
+                          'assets/images/connect-device.png',
                           color: Pallete.whiteColor,
                         ),
                       ),
@@ -219,7 +219,7 @@ class MusicPlayer extends ConsumerWidget {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Image.asset(
-                          'assests/icons/playlist.png',
+                          'assets/images/playlist.png',
                           color: Pallete.whiteColor,
                         ),
                       ),
