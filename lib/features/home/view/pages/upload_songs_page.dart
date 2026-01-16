@@ -21,15 +21,15 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
   final songNameController = TextEditingController();
   final artistController = TextEditingController();
   Color selectedColor = Pallete.cardColor;
-  File? seletedImage;
-  File? seletedAudio;
-  final formKey=GlobalKey();
+  File? selectedImage;
+  File? selectedAudio;
+  final formKey = GlobalKey();
 
   void selectAudio() async {
     final pickedAudio = await pickAudio();
     if (pickedAudio != null) {
       setState(() {
-        seletedAudio = pickedAudio;
+        selectedAudio = pickedAudio;
       });
     }
   }
@@ -38,7 +38,7 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
     final pickedImage = await pickImage();
     if (pickedImage != null) {
       setState(() {
-        seletedImage = pickedImage;
+        selectedImage = pickedImage;
       });
     }
   }
@@ -67,8 +67,8 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               ref
                   .read(homeViewmodelProvider.notifier)
                   .UploadSongs(
-                    selectedAudio: seletedAudio,
-                    selectedThumbnail: selectedImage,
+                    selectedAudio: selectedAudio!,
+                    selectedThumbnail: selectedImage!,
                     songName: songNameController.text,
                     artist: artistController.text,
                     selectedColor: selectedColor,
@@ -88,13 +88,16 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
               children: [
                 GestureDetector(
                   onTap: selectImage,
-                  child: seletedImage != null
+                  child: selectedImage != null
                       ? SizedBox(
                           height: 150,
                           width: double.infinity,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.file(seletedImage!, fit: BoxFit.cover),
+                            child: Image.file(
+                              selectedImage!,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         )
                       : DottedBorder(
@@ -125,8 +128,8 @@ class _UploadSongsPageState extends ConsumerState<UploadSongsPage> {
                         ),
                 ),
                 const SizedBox(height: 40),
-                seletedAudio != null
-                    ? AudioWave(path: seletedAudio!.path)
+                selectedAudio != null
+                    ? AudioWave(path: selectedAudio!.path)
                     : CustomField(
                         hintText: 'Pick Song',
                         controller: null,
