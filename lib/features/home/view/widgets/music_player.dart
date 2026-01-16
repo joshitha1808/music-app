@@ -125,7 +125,12 @@ class MusicPlayer extends ConsumerWidget {
                               trackHeight: 4,
                               overlayShape: SliderComponentShape.noOverlay,
                             ),
-                            child: Slider(value: 0.5, onChanged: (val) {}),
+                            child: Slider(
+                              value: sliderValue,
+                              min: 0,
+                              max: 1,
+                              onChanged: (val) {},
+                            ),
                           ),
                           const Row(
                             children: [
