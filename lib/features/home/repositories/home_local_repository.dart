@@ -10,7 +10,7 @@ HomeLocalRepository homeLocalRepository(HomeLocalRepositoryRef ref) {
 }
 
 class HomeLocalRepository {
-  final Box box = Hive.box();
+  final Box box = Hive.box('songsBox');
 
   void uploadLocalSong(SongModel song) {
     box.put(song.id, song.toJson());
