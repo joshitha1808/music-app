@@ -147,7 +147,7 @@ class MusicPlayer extends ConsumerWidget {
                               ),
                               const Expanded(child: SizedBox()),
                               Text(
-                                '${duration?.inMinutes}:${duration?.inSeconds}',
+                                '${duration?.inMinutes}:${(duration?.inSeconds ?? 0) < 10 ? '0${duration?.inSeconds}' : duration?.inSeconds}',
                                 style: const TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w300,
