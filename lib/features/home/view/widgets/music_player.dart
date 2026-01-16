@@ -114,26 +114,26 @@ class MusicPlayer extends ConsumerWidget {
                         ),
                         child: Slider(value: 0.5, onChanged: (val) {}),
                       ),
-                    ],
-                  ),
-                  const Row(
-                    children: [
-                      Text(
-                        '0.05',
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w300,
-                          color: Pallete.subtitleText,
-                        ),
-                      ),
-                      Expanded(child: SizedBox()),
-                      Text(
-                        '0.15',
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w300,
-                          color: Pallete.subtitleText,
-                        ),
+                      const Row(
+                        children: [
+                          Text(
+                            '0.05',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w300,
+                              color: Pallete.subtitleText,
+                            ),
+                          ),
+                          Expanded(child: SizedBox()),
+                          Text(
+                            '0.15',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w300,
+                              color: Pallete.subtitleText,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
