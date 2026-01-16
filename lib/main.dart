@@ -5,9 +5,12 @@ import 'package:client/features/home/view/pages/upload_songs_page.dart';
 import 'package:flutter/material.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('myBox');
 
   final container = ProviderContainer();
   await container.read(authViewModelProvider.notifier).initSharedPreferences();
