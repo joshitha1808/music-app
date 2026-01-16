@@ -28,7 +28,7 @@ class MusicSlab extends ConsumerWidget {
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
                   final tween = Tween(
-                    begin: Offset(0, 1),
+                    begin: const Offset(0, 1),
                     end: Offset.zero,
                   ).chain(CurveTween(curve: Curves.easeIn));
                   final offsetAnimation = animation.drive(tween);
@@ -45,84 +45,106 @@ class MusicSlab extends ConsumerWidget {
           Container(
             height: 66,
             width: MediaQuery.of(context).size.width - 16,
+            padding: const EdgeInsets.all(9),
             decoration: BoxDecoration(
               color: hexToColor(currentSong.hex_code),
               borderRadius: BorderRadius.circular(9),
             ),
-            padding: const EdgeInsets.all(9),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Hero(
                   tag: 'music-image',
                   child: Container(
                     width: 48,
+                    height: 48,
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9),
                       image: DecorationImage(
-                        image: NetworkImage(currentSong!.thumbnail_url),
+                        image: NetworkImage(currentSong.thumbnail_url),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.circular(9),
                     ),
                   ),
                 ),
-                const SizedBox(width: 8),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      currentSong.song_name,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      currentSong.artist,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Pallete.subtitleText,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            CupertinoIcons.heart,
-                            color: Pallete.whiteColor,
-                          ),
+
+                const SizedBox(width: 10),
+
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        currentSong.song_name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
-                        IconButton(
-                          onPressed: songNotifier.playPause,
-                          icon: Icon(
-                            songNotifier.isPlaying
-                                ? CupertinoIcons.pause_fill
-                                : CupertinoIcons.play_fill,
-                            color: Pallete.whiteColor,
-                          ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        currentSong.artist,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Pallete.subtitleText,
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(CupertinoIcons.heart),
+                  color: Colors.red,
+                ),
+
+                IconButton(
+                  onPressed: songNotifier.playPause,
+                  icon: Icon(
+                    songNotifier.isPlaying
+                        ? CupertinoIcons.pause_fill
+                        : CupertinoIcons.play_fill,
+                  ),
+                  color: Colors.black,
                 ),
               ],
             ),
           ),
+
+          // inactive seek bar
+          Positioned(
+            bottom: 0,
+            left: 8,
+            child: Container(
+              width: MediaQuery.of(context).size.width - 32,
+              height: 2,
+              decoration: BoxDecoration(
+                color: Pallete.inactiveSeekColor,
+                borderRadius: BorderRadius.circular(7),
+              ),
+            ),
+          ),
+
+          // active seek bar
           StreamBuilder(
             stream: songNotifier.audioPlayer?.positionStream,
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
+              if (!snapshot.hasData ||
+                  songNotifier.audioPlayer?.duration == null) {
                 return const SizedBox();
               }
-              final position = snapshot.data;
-              final duration = songNotifier.audioPlayer!.duration;
-              double sliderValue = 0.0;
-              if (position != null && duration != null) {
-                sliderValue = position.inMilliseconds / duration.inMilliseconds;
-              }
+
+              final position = snapshot.data!;
+              final duration = songNotifier.audioPlayer!.duration!;
+              final sliderValue =
+                  position.inMilliseconds / duration.inMilliseconds;
 
               return Positioned(
                 bottom: 0,
@@ -137,18 +159,6 @@ class MusicSlab extends ConsumerWidget {
                 ),
               );
             },
-          ),
-          Positioned(
-            bottom: 0,
-            left: 8,
-            child: Container(
-              width: MediaQuery.of(context).size.width - 32,
-              height: 2,
-              decoration: BoxDecoration(
-                color: Pallete.inactiveSeekColor,
-                borderRadius: BorderRadius.circular(7),
-              ),
-            ),
           ),
         ],
       ),
