@@ -18,37 +18,40 @@ class SongsPage extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 280,
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 3,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
-              ),
-              itemCount: recentlyPlayedSongs.length,
-              itemBuilder: (context, index) {
-                final song = recentlyPlayedSongs[index];
-                return Container(
-                  decoration: BoxDecoration(color: Pallete.cardColor),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 56,
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36),
+            child: SizedBox(
+              height: 280,
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 3,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                ),
+                itemCount: recentlyPlayedSongs.length,
+                itemBuilder: (context, index) {
+                  final song = recentlyPlayedSongs[index];
+                  return Container(
+                    decoration: BoxDecoration(color: Pallete.cardColor),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 56,
 
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(song.thumbnail_url),
-                            fit: BoxFit.cover,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(song.thumbnail_url),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(4),
                           ),
-                          borderRadius: BorderRadius.circular(4),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              },
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
           Padding(
