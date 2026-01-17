@@ -50,6 +50,18 @@ class SongsPage extends ConsumerWidget {
                             borderRadius: BorderRadius.circular(4),
                           ),
                         ),
+                        const SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            song.song_name,
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            maxLines: 1,
+                          ),
+                        ),
                       ],
                     ),
                   );
