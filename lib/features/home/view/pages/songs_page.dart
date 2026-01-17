@@ -33,7 +33,10 @@ class SongsPage extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   final song = recentlyPlayedSongs[index];
                   return Container(
-                    decoration: BoxDecoration(color: Pallete.cardColor),
+                    decoration: BoxDecoration(
+                      color: Pallete.borderColor,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
                     child: Row(
                       children: [
                         Container(
