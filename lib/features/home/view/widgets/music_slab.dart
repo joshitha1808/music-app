@@ -18,149 +18,146 @@ class MusicSlab extends ConsumerWidget {
       return const SizedBox();
     }
 
+    final slabWidth = MediaQuery.of(context).size.width - 16;
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) {
-              return const MusicPlayer();
+            pageBuilder: (_, animation, __) => const MusicPlayer(),
+            transitionsBuilder: (_, animation, __, child) {
+              final offsetAnimation = animation.drive(
+                Tween(
+                  begin: const Offset(0, 1),
+                  end: Offset.zero,
+                ).chain(CurveTween(curve: Curves.easeIn)),
+              );
+              return SlideTransition(position: offsetAnimation, child: child);
             },
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-                  final tween = Tween(
-                    begin: const Offset(0, 1),
-                    end: Offset.zero,
-                  ).chain(CurveTween(curve: Curves.easeIn));
-                  final offsetAnimation = animation.drive(tween);
-                  return SlideTransition(
-                    position: offsetAnimation,
-                    child: child,
-                  );
-                },
           ),
         );
       },
-      child: Stack(
-        children: [
-          Container(
-            height: 66,
-            width: MediaQuery.of(context).size.width - 16,
-            padding: const EdgeInsets.all(9),
-            decoration: BoxDecoration(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(9),
+        child: Stack(
+          children: [
+            Container(
+              height: 66,
+              width: slabWidth,
+              padding: const EdgeInsets.all(9),
               color: hexToColor(currentSong.hex_code),
-              borderRadius: BorderRadius.circular(9),
-            ),
-            child: Row(
-              children: [
-                Hero(
-                  tag: 'music-image',
-                  child: Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(9),
-                      image: DecorationImage(
-                        image: NetworkImage(currentSong.thumbnail_url),
-                        fit: BoxFit.cover,
+              child: Row(
+                children: [
+                  Hero(
+                    tag: 'music-image',
+                    child: Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(9),
+                        image: DecorationImage(
+                          image: NetworkImage(currentSong.thumbnail_url),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                const SizedBox(width: 10),
+                  const SizedBox(width: 10),
 
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        currentSong.song_name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          currentSong.song_name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        currentSong.artist,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Pallete.subtitleText,
+                        const SizedBox(height: 2),
+                        Text(
+                          currentSong.artist,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Pallete.subtitleText,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
 
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(CupertinoIcons.heart),
-                  color: Colors.red,
-                ),
-
-                IconButton(
-                  onPressed: songNotifier.playPause,
-                  icon: Icon(
-                    songNotifier.isPlaying
-                        ? CupertinoIcons.pause_fill
-                        : CupertinoIcons.play_fill,
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(CupertinoIcons.heart),
+                    color: Colors.red,
                   ),
-                  color: Colors.black,
-                ),
-              ],
-            ),
-          ),
 
-          // inactive seek bar
-          Positioned(
-            bottom: 0,
-            left: 8,
-            child: Container(
-              width: MediaQuery.of(context).size.width - 32,
-              height: 2,
-              decoration: BoxDecoration(
-                color: Pallete.inactiveSeekColor,
-                borderRadius: BorderRadius.circular(7),
+                  IconButton(
+                    onPressed: songNotifier.playPause,
+                    icon: Icon(
+                      songNotifier.isPlaying
+                          ? CupertinoIcons.pause_fill
+                          : CupertinoIcons.play_fill,
+                    ),
+                    color: Colors.black,
+                  ),
+                ],
               ),
             ),
-          ),
 
-          // active seek bar
-          StreamBuilder(
-            stream: songNotifier.audioPlayer?.positionStream,
-            builder: (context, snapshot) {
-              if (!snapshot.hasData ||
-                  songNotifier.audioPlayer?.duration == null) {
-                return const SizedBox();
-              }
-
-              final position = snapshot.data!;
-              final duration = songNotifier.audioPlayer!.duration!;
-              final sliderValue =
-                  position.inMilliseconds / duration.inMilliseconds;
-
-              return Positioned(
-                bottom: 0,
-                left: 8,
-                child: Container(
-                  height: 2,
-                  width: sliderValue * (MediaQuery.of(context).size.width - 32),
-                  decoration: BoxDecoration(
-                    color: Pallete.whiteColor,
-                    borderRadius: BorderRadius.circular(7),
-                  ),
+            // INACTIVE SEEK BAR
+            Positioned(
+              bottom: 0,
+              left: 8,
+              child: Container(
+                width: slabWidth - 16,
+                height: 2,
+                decoration: BoxDecoration(
+                  color: Pallete.inactiveSeekColor,
+                  borderRadius: BorderRadius.circular(7),
                 ),
-              );
-            },
-          ),
-        ],
+              ),
+            ),
+
+            // ACTIVE SEEK BAR
+            StreamBuilder(
+              stream: songNotifier.audioPlayer?.positionStream,
+              builder: (context, snapshot) {
+                if (!snapshot.hasData ||
+                    songNotifier.audioPlayer?.duration == null) {
+                  return const SizedBox();
+                }
+
+                final position = snapshot.data!;
+                final duration = songNotifier.audioPlayer!.duration!;
+                final progress =
+                    position.inMilliseconds / duration.inMilliseconds;
+
+                return Positioned(
+                  bottom: 0,
+                  left: 8,
+                  child: Container(
+                    height: 2,
+                    width: progress * (slabWidth - 16),
+                    decoration: BoxDecoration(
+                      color: Pallete.whiteColor,
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
