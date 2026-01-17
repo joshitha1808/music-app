@@ -41,7 +41,8 @@ class MusicSlab extends ConsumerWidget {
         borderRadius: BorderRadius.circular(9),
         child: Stack(
           children: [
-            Container(
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
               height: 66,
               width: slabWidth,
               padding: const EdgeInsets.all(9),
