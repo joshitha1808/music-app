@@ -34,6 +34,11 @@ class SongsPage extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   final song = recentlyPlayedSongs[index];
                   return GestureDetector(
+                    onTap: () {
+                      ref
+                          .read(currentSongNotifierProvider.notifier)
+                          .updateSong(song);
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         color: Pallete.borderColor,
