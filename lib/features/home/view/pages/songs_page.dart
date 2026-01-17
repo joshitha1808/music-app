@@ -1,10 +1,12 @@
 import 'package:client/core/providers/current_song_notifier.dart';
 import 'package:client/core/theme/app_pallete.dart';
+import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/loader.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:hive_ce/hive.dart';
 
 class SongsPage extends ConsumerWidget {
   const SongsPage({super.key});
@@ -14,8 +16,24 @@ class SongsPage extends ConsumerWidget {
     final recentlyPlayedSongs = ref
         .watch(homeViewmodelProvider.notifier)
         .getRecentlyPlayedSongs();
+    final currentSong = ref.watch(currentSongNotifierProvider);
 
-    return SafeArea(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
+      decoration: currentSong == null
+          ? null
+          : BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  hexToColor(currentSong!.hex_code),
+                  Pallete.transparentColor,
+                ],
+                stops: const [0.0, 0.3],
+              ),
+            ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
