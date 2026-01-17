@@ -38,7 +38,7 @@ class MusicPlayer extends ConsumerWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: Image.asset(
                   'assets/images/pull-down-arrow.png',
-                  color: Pallete.whiteColor,
+                  color: Colors.black,
                 ),
               ),
             ),
