@@ -33,38 +33,39 @@ class SongsPage extends ConsumerWidget {
                 itemCount: recentlyPlayedSongs.length,
                 itemBuilder: (context, index) {
                   final song = recentlyPlayedSongs[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Pallete.borderColor,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 56,
-
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(song.thumbnail_url),
-                              fit: BoxFit.cover,
+                  return GestureDetector(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Pallete.borderColor,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 56,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(song.thumbnail_url),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.circular(4),
                             ),
-                            borderRadius: BorderRadius.circular(4),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        Flexible(
-                          child: Text(
-                            song.song_name,
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700,
-                              overflow: TextOverflow.ellipsis,
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Text(
+                              song.song_name,
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              maxLines: 1,
                             ),
-                            maxLines: 1,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
