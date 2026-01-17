@@ -4,6 +4,7 @@ import 'package:client/core/widgets/loader.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 
 class SongsPage extends ConsumerWidget {
   const SongsPage({super.key});
@@ -37,6 +38,7 @@ class SongsPage extends ConsumerWidget {
                       color: Pallete.borderColor,
                       borderRadius: BorderRadius.circular(6),
                     ),
+                    padding: const EdgeInsets.only(right: 20),
                     child: Row(
                       children: [
                         Container(
