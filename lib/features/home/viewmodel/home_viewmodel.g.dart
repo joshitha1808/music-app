@@ -6,7 +6,7 @@ part of 'home_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getAllSongsHash() => r'a53a3d396d1fb56df51c87f5b8268be0061ba2d3';
+String _$getAllSongsHash() => r'a06f06bef1b9213d7a6fb1458e5a4d32f0c45f7e';
 
 /// See also [getAllSongs].
 @ProviderFor(getAllSongs)
@@ -23,21 +23,38 @@ final getAllSongsProvider = AutoDisposeFutureProvider<List<SongModel>>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetAllSongsRef = AutoDisposeFutureProviderRef<List<SongModel>>;
-String _$homeViewmodelHash() => r'dc413539db2411e911df49ad4d7f2de110afcb5d';
+String _$getFavSongsHash() => r'a87018e84ac4917a7a2b793d0931a0667503c6bb';
 
-/// See also [HomeViewmodel].
-@ProviderFor(HomeViewmodel)
-final homeViewmodelProvider =
-    AutoDisposeNotifierProvider<HomeViewmodel, AsyncValue?>.internal(
-      HomeViewmodel.new,
-      name: r'homeViewmodelProvider',
+/// See also [getFavSongs].
+@ProviderFor(getFavSongs)
+final getFavSongsProvider = AutoDisposeFutureProvider<List<SongModel>>.internal(
+  getFavSongs,
+  name: r'getFavSongsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getFavSongsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetFavSongsRef = AutoDisposeFutureProviderRef<List<SongModel>>;
+String _$homeViewModelHash() => r'6cf05ce57d5841404e742daaf6425c79a0258148';
+
+/// See also [HomeViewModel].
+@ProviderFor(HomeViewModel)
+final homeViewModelProvider =
+    AutoDisposeNotifierProvider<HomeViewModel, AsyncValue?>.internal(
+      HomeViewModel.new,
+      name: r'homeViewModelProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$homeViewmodelHash,
+          : _$homeViewModelHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$HomeViewmodel = AutoDisposeNotifier<AsyncValue?>;
+typedef _$HomeViewModel = AutoDisposeNotifier<AsyncValue?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
