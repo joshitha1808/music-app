@@ -1,6 +1,7 @@
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/core/theme/theme.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
+import 'package:client/features/home/models/song_model.dart';
 import 'package:client/features/home/view/pages/home_page.dart';
 import 'package:client/features/home/view/pages/upload_songs_page.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,8 @@ void main() async {
     androidNotificationOngoing: true,
   );
   await Hive.initFlutter();
-  await Hive.openBox('songsBox');
 
+  await Hive.openBox<SongModel>('songsBox');
   final container = ProviderContainer();
   await container.read(authViewModelProvider.notifier).initSharedPreferences();
   await container.read(authViewModelProvider.notifier).getData();
